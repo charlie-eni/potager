@@ -36,4 +36,12 @@ public class Potager {
 		this.carre = carre;
 	}
 
+	public Potager(String localisation, String nom, String surface, String ville) {
+		super();
+		this.localisation = localisation;
+		this.nom = nom;
+		this.surface = surface;
+		this.ville = ville;
+	}
+
 }
