@@ -24,10 +24,10 @@ public class Carre {
 	private TypeSol typeSol;
 	private Exposition typeExposition;
 
-	@ManyToOne
+	@ManyToOne()
 	private Potager potager;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne( cascade = CascadeType.ALL)
 	private Plante plante;
 
 	public Carre(Integer surface, TypeSol typeSol, Exposition typeExposition, Potager potager, Plante plante) {

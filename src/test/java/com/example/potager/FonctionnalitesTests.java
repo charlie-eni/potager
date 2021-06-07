@@ -2,6 +2,8 @@ package com.example.potager;
 
 import java.time.LocalDate;
 
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -59,6 +61,7 @@ class FonctionnalitesTests {
 	}
 	
 	@Test
+	@Transactional
 	void updatePlanteToCarreToPotager() {
 		System.out.println("============== Ajout d'une plante ================");
 		Potager potager = new Potager("serre", "Premier potager", 5000, "Quimper");
