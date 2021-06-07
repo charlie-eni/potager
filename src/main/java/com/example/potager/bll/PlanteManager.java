@@ -13,7 +13,7 @@ public interface PlanteManager {
 	
 	public void updatePlante(Plante plante);
 	
-	public void deletePlante(Plante plante);
+	public void deletePlante(Integer id);
 	
 	public List<Plante> getAllPlante();
 	

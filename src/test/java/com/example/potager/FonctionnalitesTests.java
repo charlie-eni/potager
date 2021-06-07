@@ -95,9 +95,9 @@ class FonctionnalitesTests {
 		System.out.println(plante);
 		potaManager.deletePotager(potager);
 		carrManager.deleteCarre(carre);
-		planteManager.deletePlante(plante);
+		planteManager.deletePlante(plante.getIdPlante());
 		System.out.println("======== Delete Plante ========");
-		System.out.println(plante);
+		System.out.println(planteManager.getAllPlante() + "Coucou les plantes");
 	}
 
 }

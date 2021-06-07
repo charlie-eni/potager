@@ -34,8 +34,8 @@ public class PlanteManagerImpl implements PlanteManager {
 	}
 
 	@Override
-	public void deletePlante(Plante plante) {
-		dao.delete(plante);
+	public void deletePlante(Integer id) {
+		dao.deleteById(id);
 		
 	}
 
