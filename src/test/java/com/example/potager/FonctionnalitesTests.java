@@ -38,13 +38,17 @@ class FonctionnalitesTests {
 	@Autowired
 	ActionManager actionManager;
 
+	
+	/*
 	@Test
+	@Transactional
 	void addPotagerTest() {
 		System.out.println("Ajout de Potager");
 		Potager potager = new Potager("serre", "Premier potager", 50, "Quimper");
 		potaManager.addPotager(potager);
 		System.out.println();
 	}
+
 
 	@Test
 	void addCarreToPotager() {
@@ -112,6 +116,16 @@ class FonctionnalitesTests {
 	void listActionTwoWeeks() {
 		List<Action> actions = actionManager.listActionForTwoWeeks();
 		assertEquals(actions.size(),1);
+	}*/
+	
+//	Visualiser la localisation d’une plante (nom ou nom et variété) dans les potagers
+//	(potager, carré, quantité etc.)
+	@Test
+	@Transactional
+	void getPotagerByPlant() {
+		List<Potager> potagers = potaManager.getPotagerByPlant("Toomate");
+		assertEquals(potagers.size(),1);
 	}
 	
+
 }

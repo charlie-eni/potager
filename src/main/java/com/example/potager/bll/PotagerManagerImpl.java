@@ -38,5 +38,9 @@ public class PotagerManagerImpl implements PotagerManager {
 	public Potager getById(Integer id) {
 		return dao.findById(id).orElse(null);
 	}
+	
+	public List<Potager> getPotagerByPlant(String plantName){
+		return dao.getPotagerFromPlante(plantName);
+	}
 
 }
