@@ -27,7 +27,7 @@ public class Carre {
 	@ManyToOne()
 	private Potager potager;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private Plante plante;
 
 	public Carre(Integer surface, TypeSol typeSol, Exposition typeExposition, Potager potager, Plante plante) {

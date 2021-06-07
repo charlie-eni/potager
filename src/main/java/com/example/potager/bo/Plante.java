@@ -25,7 +25,7 @@ public class Plante {
 	private String variete;
 	private Integer surface;
 
-	@OneToOne(mappedBy = "plante", cascade= CascadeType.ALL)
+	@OneToOne(mappedBy = "plante")
 	private Carre carre;
 
 	private Integer nbPlante;
