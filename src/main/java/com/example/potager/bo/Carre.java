@@ -3,6 +3,11 @@ package com.example.potager.bo;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +17,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Carre {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idCarre;
+
 	private Integer surface;
 	private TypeSol typeSol;
 	private Exposition typeExposition;
+	
+	@ManyToOne
 	private Potager potager;
+
+	@OneToOne
 	private List<Plante> plante;
 
 	public Carre(Integer surface, TypeSol typeSol, Exposition typeExposition, Potager potager, List<Plante> plante) {
