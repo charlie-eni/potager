@@ -11,7 +11,7 @@ import com.example.potager.bo.Action;
 
 public interface ActionDAO extends CrudRepository<Action, Integer> {
 
-	@Query("SELECT a.date FROM Action a WHERE a.date<:date")
+	@Query("SELECT a FROM Action a WHERE a.date<:date")
 	List<Action> listAction(@Param("date") LocalDate date);
 
 }

@@ -1,6 +1,9 @@
 package com.example.potager;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -13,6 +16,12 @@ import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Action;
+import com.example.potager.bo.Carre;
+import com.example.potager.bo.Exposition;
+import com.example.potager.bo.Plante;
+import com.example.potager.bo.Potager;
+import com.example.potager.bo.TypeSol;
+import com.example.potager.bo.Type;
 
 @SpringBootTest
 class FonctionnalitesTests {
@@ -29,7 +38,7 @@ class FonctionnalitesTests {
 	@Autowired
 	ActionManager actionManager;
 
-	/* @Test
+	@Test
 	void addPotagerTest() {
 		System.out.println("Ajout de Potager");
 		Potager potager = new Potager("serre", "Premier potager", 50, "Quimper");
@@ -96,15 +105,13 @@ class FonctionnalitesTests {
 		planteManager.deletePlante(plante.getIdPlante());
 		System.out.println("======== Delete Plante ========");
 		System.out.println(planteManager.getAllPlante() + "Coucou les plantes");
-	} */
+	} 
 
 	@Test
 	@Transactional
 	void listActionTwoWeeks() {
-		actionManager.addAction(new Action(LocalDate.now().plusDays(1),"Rempoter plant", "Serre"));
-		actionManager.addAction(new Action(LocalDate.now().plusMonths(1),"Machin 2 semaines", "Serre"));
-		
-		actionManager.listActionForTwoWeeks();
+		List<Action> actions = actionManager.listActionForTwoWeeks();
+		assertEquals(actions.size(),1);
 	}
 	
 }

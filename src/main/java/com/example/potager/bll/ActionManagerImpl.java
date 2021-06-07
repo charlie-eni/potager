@@ -1,6 +1,7 @@
 package com.example.potager.bll;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,10 @@ public class ActionManagerImpl implements ActionManager {
 	}
 
 	@Override
-	public void listActionForTwoWeeks() {
+	public List<Action> listActionForTwoWeeks() {
 		LocalDate date = LocalDate.now().plusDays(14);
-		dao.listAction(date);
-		System.out.println(dao.listAction(date));
+		return dao.listAction(date);
+		
 	}
 
 }
