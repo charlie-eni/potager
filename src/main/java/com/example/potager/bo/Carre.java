@@ -1,7 +1,5 @@
 package com.example.potager.bo;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,9 +27,9 @@ public class Carre {
 	private Potager potager;
 
 	@OneToOne
-	private List<Plante> plante;
+	private Plante plante;
 
-	public Carre(Integer surface, TypeSol typeSol, Exposition typeExposition, Potager potager, List<Plante> plante) {
+	public Carre(Integer surface, TypeSol typeSol, Exposition typeExposition, Potager potager, Plante plante) {
 		super();
 		this.surface = surface;
 		this.typeSol = typeSol;
