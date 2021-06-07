@@ -57,5 +57,24 @@ class FonctionnalitesTests {
 		planteManager.addPlante(plante);
 		System.out.println(plante);
 	}
+	
+	@Test
+	void updatePlanteToCarreToPotager() {
+		System.out.println("============== Ajout d'une plante ================");
+		Potager potager = new Potager("serre", "Premier potager", 5000, "Quimper");
+		potaManager.addPotager(potager);
+		Carre carre = new Carre(1000, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager);
+		carrManager.addCarre(carre);
+		Plante plante = new Plante("Tomate", Type.fruit, "cerise", 100, carre, 10, LocalDate.now());
+		planteManager.addPlante(plante);
+		System.out.println(plante);
+		potager.setNom("Premier potager updater");
+		potaManager.updatePotager(potager);
+		plante.setVariete("coeur de boeuf");
+		planteManager.updatePlante(plante);
+		carre.setTypeSol(TypeSol.ARGILEUX);
+		carrManager.updateCarre(carre);
+		System.out.println(plante);
+	}
 
 }
