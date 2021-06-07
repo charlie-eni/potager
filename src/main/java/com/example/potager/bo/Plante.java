@@ -25,21 +25,22 @@ public class Plante {
 	private Type type;
 	private String variete;	
 	private Integer surface;
+	private Carre carre;
 	private Integer nbPlante;
 	private LocalDate miseEnPlace;
-	private LocalDate dateRecolte;
 	
-	public Plante(String nom, Type type, String variete, Integer surface, Integer nbPlante, LocalDate miseEnPlace,
-			LocalDate dateRecolte) {
+	public Plante(String nom, Type type, String variete, Integer surface, Carre carre, Integer nbPlante,
+			LocalDate miseEnPlace) {
 		super();
 		this.nom = nom;
 		this.type = type;
 		this.variete = variete;
 		this.surface = surface;
+		this.carre = carre;
 		this.nbPlante = nbPlante;
 		this.miseEnPlace = miseEnPlace;
-		this.dateRecolte = dateRecolte;
 	}
+	
 	
 	
 
