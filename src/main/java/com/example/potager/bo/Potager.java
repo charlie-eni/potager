@@ -21,13 +21,13 @@ public class Potager {
 	private Integer idPotager;
 	private String localisation;
 	private String nom;
-	private String surface;
+	private Integer surface;
 	private String ville;
 
 	@OneToMany(mappedBy = "potager")
 	private List<Carre> carre;
 
-	public Potager(String localisation, String nom, String surface, String ville, List<Carre> carre) {
+	public Potager(String localisation, String nom, Integer surface, String ville, List<Carre> carre) {
 		super();
 		this.localisation = localisation;
 		this.nom = nom;
@@ -36,7 +36,7 @@ public class Potager {
 		this.carre = carre;
 	}
 
-	public Potager(String localisation, String nom, String surface, String ville) {
+	public Potager(String localisation, String nom, Integer surface, String ville) {
 		super();
 		this.localisation = localisation;
 		this.nom = nom;
