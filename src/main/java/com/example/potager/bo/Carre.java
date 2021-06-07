@@ -1,5 +1,6 @@
 package com.example.potager.bo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class Carre {
 	@ManyToOne()
 	private Potager potager;
 
-	@OneToOne( cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Plante plante;
 
 	public Carre(Integer surface, TypeSol typeSol, Exposition typeExposition, Potager potager, Plante plante) {
@@ -45,7 +46,5 @@ public class Carre {
 		this.typeExposition = typeExposition;
 		this.potager = potager;
 	}
-	
-	
 
 }
