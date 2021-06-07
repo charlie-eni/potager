@@ -26,20 +26,17 @@ public class PotagerManagerImpl implements PotagerManager {
 
 	@Override
 	public void deletePotager(Potager potager) {
-		// TODO Auto-generated method stub
-
+		dao.delete(potager);
 	}
 
 	@Override
 	public List<Potager> getAllPotager() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Potager>) dao.findAll();
 	}
 
 	@Override
 	public Potager getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findById(id).orElse(null);
 	}
 
 }
