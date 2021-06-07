@@ -2,6 +2,7 @@ package com.example.potager.bo;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Plante {
-
+ 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idPlante;
@@ -24,7 +25,7 @@ public class Plante {
 	private String variete;
 	private Integer surface;
 
-	@OneToOne(mappedBy = "plante")
+	@OneToOne(mappedBy = "plante", cascade= CascadeType.ALL)
 	private Carre carre;
 
 	private Integer nbPlante;
