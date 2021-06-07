@@ -38,4 +38,14 @@ public class Carre {
 		this.plante = plante;
 	}
 
+	public Carre(Integer surface, TypeSol typeSol, Exposition typeExposition, Potager potager) {
+		super();
+		this.surface = surface;
+		this.typeSol = typeSol;
+		this.typeExposition = typeExposition;
+		this.potager = potager;
+	}
+	
+	
+
 }
