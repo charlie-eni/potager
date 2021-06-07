@@ -1,9 +1,12 @@
 package com.example.potager.bo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,5 +23,18 @@ public class Potager {
 	private String nom;
 	private String surface;
 	private String ville;
+	
+	@OneToMany(mappedBy="potager")
+	private List<Carre> carre;
 
+	public Potager(String localisation, String nom, String surface, String ville, List<Carre> carre) {
+		super();
+		this.localisation = localisation;
+		this.nom = nom;
+		this.surface = surface;
+		this.ville = ville;
+		this.carre = carre;
+	}
+
+	
 }
