@@ -24,7 +24,7 @@ public class Carre {
 	private Integer surface;
 	private TypeSol typeSol;
 	private Exposition typeExposition;
-	
+
 	@ManyToOne
 	private Potager potager;
 

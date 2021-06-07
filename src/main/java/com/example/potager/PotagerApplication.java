@@ -10,6 +10,4 @@ public class PotagerApplication {
 		SpringApplication.run(PotagerApplication.class, args);
 	}
 
-	
-	
 }

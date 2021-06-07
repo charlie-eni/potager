@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Potager {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idPotager;
@@ -23,8 +23,8 @@ public class Potager {
 	private String nom;
 	private String surface;
 	private String ville;
-	
-	@OneToMany(mappedBy="potager")
+
+	@OneToMany(mappedBy = "potager")
 	private List<Carre> carre;
 
 	public Potager(String localisation, String nom, String surface, String ville, List<Carre> carre) {
@@ -36,5 +36,4 @@ public class Potager {
 		this.carre = carre;
 	}
 
-	
 }

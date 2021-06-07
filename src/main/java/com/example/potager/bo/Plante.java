@@ -1,6 +1,5 @@
 package com.example.potager.bo;
 
-
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -17,21 +16,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Plante {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idPlante;
 	private String nom;
 	private Type type;
-	private String variete;	
+	private String variete;
 	private Integer surface;
-	
-	@OneToOne(mappedBy="plante")
+
+	@OneToOne(mappedBy = "plante")
 	private Carre carre;
-	
+
 	private Integer nbPlante;
 	private LocalDate miseEnPlace;
-	
+
 	public Plante(String nom, Type type, String variete, Integer surface, Carre carre, Integer nbPlante,
 			LocalDate miseEnPlace) {
 		super();
@@ -43,9 +41,5 @@ public class Plante {
 		this.nbPlante = nbPlante;
 		this.miseEnPlace = miseEnPlace;
 	}
-	
-	
-	
 
-	
 }
