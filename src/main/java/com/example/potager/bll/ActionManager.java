@@ -6,4 +6,6 @@ public interface ActionManager {
 
 	public void addAction(Action action);
 	
+	public void listActionForTwoWeeks();
+	
 }
