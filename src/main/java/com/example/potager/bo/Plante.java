@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Plante {
 
-	//TODO Une plante dans un carré
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
