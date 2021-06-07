@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -81,7 +80,7 @@ class FonctionnalitesTests {
 		System.out.println("======== SYSO Update ========");
 		System.out.println(plante);
 	}
-	
+
 	@Test
 	@Transactional
 	void deletePlanteToCarreToPotager() {

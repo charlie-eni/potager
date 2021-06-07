@@ -14,40 +14,34 @@ public class PlanteManagerImpl implements PlanteManager {
 
 	@Autowired
 	private PlanteDAO dao;
-	
+
 	@Override
 	public void addPlante(Plante plante) {
 		dao.save(plante);
-		
 	}
 
 	@Override
 	public void addPlanteToCarre(Plante plante, Carre carre) {
 		addPlante(plante);
-		
 	}
 
 	@Override
 	public void updatePlante(Plante plante) {
 		dao.save(plante);
-		
 	}
 
 	@Override
 	public void deletePlante(Integer id) {
 		dao.deleteById(id);
-		
 	}
 
 	@Override
 	public List<Plante> getAllPlante() {
-
-		return (List<Plante>)dao.findAll();
+		return (List<Plante>) dao.findAll();
 	}
 
 	@Override
 	public Plante getById(Integer id) {
-		
 		return dao.findById(id).orElse(null);
 	}
 

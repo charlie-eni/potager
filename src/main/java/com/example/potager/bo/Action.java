@@ -18,16 +18,15 @@ public class Action {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idAction;
-	private LocalDate date;						
-	private String evenement;						
-	private String lieu; //(quel potager ou quel carré ou “serre” ou “autre”)	
-	
+	private LocalDate date;
+	private String evenement;
+	private String lieu; // (quel potager ou quel carré ou “serre” ou “autre”)
+
 	public Action(LocalDate date, String evenement, String lieu) {
 		super();
 		this.date = date;
 		this.evenement = evenement;
 		this.lieu = lieu;
 	}
-	
-	
+
 }

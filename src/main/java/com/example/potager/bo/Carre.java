@@ -1,6 +1,5 @@
 package com.example.potager.bo;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +23,7 @@ public class Carre {
 	private TypeSol typeSol;
 	private Exposition typeExposition;
 
-	@ManyToOne()
+	@ManyToOne
 	private Potager potager;
 
 	@OneToOne
