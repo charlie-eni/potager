@@ -23,7 +23,7 @@ public class PlanteManagerImpl implements PlanteManager {
 
 	@Override
 	public void addPlanteToCarre(Plante plante, Carre carre) {
-		// TODO Auto-generated method stub
+		addPlante(plante);
 		
 	}
 
@@ -48,7 +48,7 @@ public class PlanteManagerImpl implements PlanteManager {
 	@Override
 	public Plante getById(Integer id) {
 		
-		return null;
+		return dao.findById(id).orElse(null);
 	}
 
 }
