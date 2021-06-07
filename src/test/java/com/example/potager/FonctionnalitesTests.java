@@ -59,7 +59,7 @@ class FonctionnalitesTests {
 		planteManager.addPlante(plante);
 		System.out.println(plante);
 	}
-	
+
 	@Test
 	//@Transactional
 	void updatePlanteToCarreToPotager() {
