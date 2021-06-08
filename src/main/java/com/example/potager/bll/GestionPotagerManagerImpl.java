@@ -75,7 +75,6 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 		planteDAO.save(plante);
 		carDAO.save(carre);
 		potaDAO.save(potager);
-
 	}
 
 	@Override
