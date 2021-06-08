@@ -6,19 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.potager.bll.PotagerManager;
-import com.example.potager.bo.Potager;
-
+import com.example.potager.bll.PlanteManager;
+import com.example.potager.bo.Plante;
 
 @RestController
-public class MainController {
-	
+public class PlanteController {
+
 	@Autowired
-	PotagerManager potagerMger;
+	PlanteManager planteManager;
 	
-	@GetMapping("/api/getPotager")
-	public List<Potager> getPotager() {
-		return potagerMger.getAllPotager();
-	}
-	
+	@GetMapping("/api/getPlante")
+	public List<Plante> getPlante(){
+		return planteManager.getAllPlante();	}
 }
