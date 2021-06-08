@@ -1,6 +1,8 @@
 package com.example.potager.bll;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.potager.bo.Carre;
@@ -14,14 +16,17 @@ public class PlanteManagerImpl implements PlanteManager {
 	private PlanteDAO dao;
 
 	@Override
-	public void addPlante(Plante plante) {
-			
- 		dao.save(plante);
+	public void addPlante(Plante plante) throws PlanteException {
+
+		Optional<Plante> doublon = dao.findByNomAndVariete(plante.getNom(), plante.getVariete());
+		if (doublon.isPresent()) {
+			throw new PlanteException("Pas de doublons de plantes");
+		}
+		dao.save(plante);
 	}
 
 	@Override
-	public void addPlanteToCarre(Plante plante, Carre carre){
-		
+	public void addPlanteToCarre(Plante plante, Carre carre) throws PlanteException {
 		addPlante(plante);
 	}
 

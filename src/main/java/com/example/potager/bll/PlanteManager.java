@@ -7,9 +7,9 @@ import com.example.potager.bo.Plante;
 
 public interface PlanteManager {
 
-	public void addPlante(Plante plante);
+	public void addPlante(Plante plante) throws PlanteException;
 
-	public void addPlanteToCarre(Plante plante, Carre carre);
+	public void addPlanteToCarre(Plante plante, Carre carre) throws PlanteException;
 
 	public void updatePlante(Plante plante);
 
