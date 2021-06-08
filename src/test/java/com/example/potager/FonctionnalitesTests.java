@@ -3,6 +3,7 @@ package com.example.potager;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.potager.bll.ActionManager;
+import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bll.PotagerManager;
@@ -49,17 +51,28 @@ class FonctionnalitesTests {
 		System.out.println();
 	}
 
-
+	*/
 	@Test
-	void addCarreToPotager() {
+	//@Transactional
+	void addCarreToPotager() throws CarreException {
 		System.out.println("========= Ajout carrÃ© au potager ========");
-		Potager potager = new Potager("serre", "Premier potager", 50, "Quimper");
-		potaManager.addPotager(potager);
-		Carre carre = new Carre(1000, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager);
+		Potager potager4 = new Potager("serre", "Second potager", 1500, "Quimper");
+		potaManager.addPotager(potager4);
+		Carre carre = new Carre(500, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager4);
 		carrManager.addCarre(carre);
+		
+		Carre carre2 = new Carre(500, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager4);
+		carrManager.addCarre(carre2);
+
+		Carre carre3 = new Carre(500, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager4);
+		carrManager.addCarre(carre3);	
+		
+		//Carre carre4 = new Carre(500, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager4);
+		//carrManager.addCarre(carre4);
+		
 		System.out.println(carre);
 	}
-
+/*
 	@Test
 	void addPlanteToCarreToPotager() {
 		System.out.println("============== Ajout d'une plante ================");
@@ -116,16 +129,16 @@ class FonctionnalitesTests {
 	void listActionTwoWeeks() {
 		List<Action> actions = actionManager.listActionForTwoWeeks();
 		assertEquals(actions.size(),1);
-	}*/
+	}
 	
-//	Visualiser la localisation d’une plante (nom ou nom et variété) dans les potagers
-//	(potager, carré, quantité etc.)
+//	Visualiser la localisation dï¿½une plante (nom ou nom et variï¿½tï¿½) dans les potagers
+//	(potager, carrï¿½, quantitï¿½ etc.)
 	@Test
 	@Transactional
 	void getPotagerByPlant() {
 		List<Potager> potagers = potaManager.getPotagerByPlant("Toomate");
 		assertEquals(potagers.size(),1);
-	}
+	}*/
 	
 
 }

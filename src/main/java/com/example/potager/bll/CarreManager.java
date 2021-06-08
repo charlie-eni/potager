@@ -6,7 +6,7 @@ import com.example.potager.bo.Carre;
 
 public interface CarreManager {
 
-	public void addCarre(Carre carre);
+	public void addCarre(Carre carre) throws CarreException;
 
 	public void deleteCarre(Carre carre);
 

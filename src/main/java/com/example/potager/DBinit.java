@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.potager.bll.ActionManager;
+import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bll.PotagerManager;
@@ -42,11 +43,11 @@ public class DBinit {
 
 	@PostConstruct
 	@Transactional
-	private void postConstruct() {
+	private void postConstruct() throws CarreException {
 		actionMger.addAction(new Action(LocalDate.now(), "NOW!", "fdsfds"));
 		actionMger.addAction(new Action(LocalDate.now().plusMonths(1), "Dans un mois", "fdsfds"));
 
-		Potager potager = new Potager("serre", "Premier potager", 50, "Quimper");
+		Potager potager = new Potager("serre", "Premier potager", 1500, "Quimper");
 		potagerMger.addPotager(potager);
 
 		Carre carre = new Carre(1000, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager);
