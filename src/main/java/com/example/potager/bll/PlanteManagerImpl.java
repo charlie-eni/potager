@@ -1,10 +1,8 @@
 package com.example.potager.bll;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.potager.bo.Carre;
 import com.example.potager.bo.Plante;
 import com.example.potager.dal.PlanteDAO;
@@ -17,11 +15,13 @@ public class PlanteManagerImpl implements PlanteManager {
 
 	@Override
 	public void addPlante(Plante plante) {
-		dao.save(plante);
+			
+ 		dao.save(plante);
 	}
 
 	@Override
-	public void addPlanteToCarre(Plante plante, Carre carre) {
+	public void addPlanteToCarre(Plante plante, Carre carre){
+		
 		addPlante(plante);
 	}
 

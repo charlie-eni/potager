@@ -1,6 +1,7 @@
 package com.example.potager.bll;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -30,6 +31,9 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 
 	@Autowired
 	PlanteDAO planteDAO;
+	
+	@Autowired
+	PlanteManager planteManager;
 
 	@Autowired
 	PlanteIntoCarreDAO planDAO;
@@ -39,7 +43,31 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 
 	@Override
 	@Transactional
-	public void addPlanteToPotager(Potager potager, Plante plante, Carre carre, PlanteIntoCarre plan) {
+	public void addPlanteToPotager(Potager potager, Plante plante, Carre carre, PlanteIntoCarre plan) throws PlanteIntoCarreException {
+		
+		
+		List<Plante> lstPlante = planteManager.getAllPlante();
+		List<Integer> lstSurface = new ArrayList<Integer>();
+		
+		for (Plante p : lstPlante) {
+			
+			for(PlanteIntoCarre pic : p.getPlans()) {
+				if(pic.getCarre().getIdCarre() == carre.getIdCarre()) {
+					
+					lstSurface.add( (p.getSurface() * p.getNbPlante()));
+				}
+			}
+				
+		}
+		int sum = 0;
+		for(int i = 0; i<lstSurface.size(); i++) {
+			sum += lstSurface.get(i);
+		}
+		
+		if((sum + (plante.getSurface()* plante.getNbPlante())) > carre.getSurface()) {
+			throw new PlanteIntoCarreException("La limite de plante est atteinte pour le carré!");
+		}
+		
 		plan.addCarre(carre);
 		plan.addPlante(plante);
 		potager.addCarre(carre);
@@ -47,6 +75,8 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 		planteDAO.save(plante);
 		carDAO.save(carre);
 		potaDAO.save(potager);
+		
+		
 	}
 
 	@Override

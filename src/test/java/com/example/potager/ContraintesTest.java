@@ -1,16 +1,23 @@
 package com.example.potager;
 
+import java.time.LocalDate;
+
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
+import com.example.potager.bll.GestionPotagerManager;
+import com.example.potager.bll.PlanteIntoCarreException;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Carre;
 import com.example.potager.bo.Exposition;
+import com.example.potager.bo.Plante;
+import com.example.potager.bo.PlanteIntoCarre;
 import com.example.potager.bo.Potager;
+import com.example.potager.bo.Type;
 import com.example.potager.bo.TypeSol;
 
 @SpringBootTest
@@ -25,9 +32,14 @@ class ContraintesTest {
 	@Autowired
 	PlanteManager planteManager;
 	
+	@Autowired
+	GestionPotagerManager gestionManager;
+	
+	/*
 	@Test
+	@Transactional
 	void surfaceCarreInferieurSurfacePotager() throws CarreException {
-		System.out.println("========= Ajout carré au potager ========");
+		System.out.println("========= Contrainte carre potager ========");
 		Potager potager4 = new Potager("serre", "Second potager", 1500, "Quimper");
 		potaManager.addPotager(potager4);
 		Carre carre = new Carre(500, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager4);
@@ -43,6 +55,21 @@ class ContraintesTest {
 		//carrManager.addCarre(carre4);
 		
 		System.out.println(carre);
+	}*/
+	
+	@Test
+	@Transactional
+	void surfacePlanteInferieureSurfaceCarre() throws PlanteIntoCarreException{
+		System.out.println("======== Contrainte plante carre ========");
+		Potager potager = new Potager("ici", "Potager de test", 10000, "Quimper");
+		Plante plante = new Plante("Pommier", Type.fruit, "Golden", 200, 1, LocalDate.now());
+		Plante plante2 = new Plante("Tomate", Type.fruit, "Citron", 200, 1, LocalDate.now());
+		Plante plante3 = new Plante("Pêche", Type.fruit, "Melba", 200, 3, LocalDate.now());
+		PlanteIntoCarre plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
+		Carre carre = new Carre(900, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager);
+		gestionManager.addPlanteToPotager(potager, plante, carre, plan);
+		gestionManager.addPlanteToPotager(potager, plante2, carre, plan);
+		gestionManager.addPlanteToPotager(potager, plante3, carre, plan);
 	}
 
 }
