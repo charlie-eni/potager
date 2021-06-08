@@ -14,7 +14,7 @@ public interface GestionPotagerManager {
 
 	public List<Potager> showPotager();
 
-	public void addAction(Action action);
+	public void addAction(Action action) throws PlanteIntoCarreException;
 
 	public List<Action> listActionForTwoWeeks();
 

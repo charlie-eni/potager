@@ -12,6 +12,7 @@ import com.example.potager.bll.GestionPotagerManager;
 import com.example.potager.bll.PlanteIntoCarreException;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bll.PotagerManager;
+import com.example.potager.bo.Action;
 import com.example.potager.bo.Carre;
 import com.example.potager.bo.Exposition;
 import com.example.potager.bo.Plante;
@@ -55,7 +56,7 @@ class ContraintesTest {
 		//carrManager.addCarre(carre4);
 		
 		System.out.println(carre);
-	}*/
+	}
 	
 	@Test
 	@Transactional
@@ -70,6 +71,18 @@ class ContraintesTest {
 		gestionManager.addPlanteToPotager(potager, plante, carre, plan);
 		gestionManager.addPlanteToPotager(potager, plante2, carre, plan);
 		gestionManager.addPlanteToPotager(potager, plante3, carre, plan);
-	}
+	}*/
 
+	@Test
+	@Transactional
+	void dateActionSuperieurOuEgaleADateJour() throws PlanteIntoCarreException{
+		System.out.println("======== Contrainte date ========");
+		
+		Action action = new Action(LocalDate.now(), "Arrosage", "carré 1");
+		gestionManager.addAction(action);
+		
+		Action action2 = new Action(LocalDate.now().minusDays(1), "Arrosage", "carré 1");
+		gestionManager.addAction(action2);
+
+	}
 }

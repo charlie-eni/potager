@@ -85,7 +85,10 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 	}
 
 	@Override
-	public void addAction(Action action) {
+	public void addAction(Action action) throws PlanteIntoCarreException {
+		if(action.getDate().isBefore(LocalDate.now())) {
+			throw new PlanteIntoCarreException("La date n'est pas valide");
+		}
 		actionDAO.save(action);
 	}
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.GestionPotagerManager;
+import com.example.potager.bll.PlanteIntoCarreException;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Action;
@@ -43,7 +44,7 @@ public class DBinit {
 
 	@PostConstruct
 	@Transactional
-	private void postConstruct() throws CarreException {
+	private void postConstruct() throws CarreException, PlanteIntoCarreException {
 		gestionMger.addAction(new Action(LocalDate.now(), "NOW!", "fdsfds"));
 		gestionMger.addAction(new Action(LocalDate.now().plusMonths(1), "Dans un mois", "fdsfds"));
 
