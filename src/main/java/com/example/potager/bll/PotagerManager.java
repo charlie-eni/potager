@@ -2,7 +2,9 @@ package com.example.potager.bll;
 
 import java.util.List;
 
+import com.example.potager.bo.Carre;
 import com.example.potager.bo.Potager;
+import com.example.potager.bo.TypeSol;
 
 public interface PotagerManager {
 
@@ -16,5 +18,5 @@ public interface PotagerManager {
 	
 	public Potager getById(Integer id);
 	
-	public List<Potager> getPotagerByPlant(String plantName);
+	public Integer getPotagerByPlant(String plantName);
 }

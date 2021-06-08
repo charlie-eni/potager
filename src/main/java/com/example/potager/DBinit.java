@@ -1,6 +1,7 @@
 package com.example.potager;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
@@ -37,7 +38,7 @@ public class DBinit {
 
 	@Autowired
 	CarreManager carreMger;
-	
+
 	@Autowired
 	PlanteIntoCarreDAO planDAO;
 
@@ -49,19 +50,34 @@ public class DBinit {
 
 		Potager potager = new Potager("serre", "Premier potager", 1500, "Quimper");
 		potagerMger.addPotager(potager);
+		Potager potager2 = new Potager("serre", "second potager", 50, "brest");
+		potagerMger.addPotager(potager2);
 
 		Carre carre = new Carre(1000, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager);
+		Carre carre2 = new Carre(500, TypeSol.ARGILEUX, Exposition.MI_OMBRE, potager2);
 
 		Plante plante = new Plante("Tomate", Type.fruit, "cerise", 100, 10, LocalDate.now());
-	
+		Plante plante2 = new Plante("carotte", Type.fruit, "cerise", 100, 10, LocalDate.now());
+
 		PlanteIntoCarre plan = new PlanteIntoCarre(12, LocalDate.now(), LocalDate.now());
 		plan.addCarre(carre);
 		plan.addPlante(plante);
-		
-		
+
+		PlanteIntoCarre plan2 = new PlanteIntoCarre(12, LocalDate.now(), LocalDate.now());
+		plan2.addCarre(carre2);
+		plan2.addPlante(plante2);
+
 		planteMger.addPlante(plante);
 		carreMger.addCarre(carre);
 		planDAO.save(plan);
+
+		planteMger.addPlante(plante2);
+		carreMger.addCarre(carre2);
+		planDAO.save(plan2);
+		
+		Integer idCarre = potagerMger.getPotagerByPlant("Carotte");
+		System.out.println(idCarre);
+		
 	}
 
 }

@@ -131,6 +131,7 @@ class FonctionnalitesTests {
 		assertEquals(actions.size(),1);
 	}
 	
+<<<<<<< HEAD
 //	Visualiser la localisation d�une plante (nom ou nom et vari�t�) dans les potagers
 //	(potager, carr�, quantit� etc.)
 	@Test
@@ -140,5 +141,8 @@ class FonctionnalitesTests {
 		assertEquals(potagers.size(),1);
 	}*/
 	
+=======
+>>>>>>> ebf2315cea18dbad94018edcfcb364560aa1b3a6
 
+	
 }
