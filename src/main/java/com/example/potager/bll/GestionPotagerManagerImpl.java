@@ -1,5 +1,6 @@
 package com.example.potager.bll;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -12,6 +13,7 @@ import com.example.potager.bo.Carre;
 import com.example.potager.bo.Plante;
 import com.example.potager.bo.PlanteIntoCarre;
 import com.example.potager.bo.Potager;
+import com.example.potager.dal.ActionDAO;
 import com.example.potager.dal.CarreDAO;
 import com.example.potager.dal.PlanteDAO;
 import com.example.potager.dal.PlanteIntoCarreDAO;
@@ -28,9 +30,12 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 
 	@Autowired
 	PlanteDAO planteDAO;
-	
+
 	@Autowired
 	PlanteIntoCarreDAO planDAO;
+
+	@Autowired
+	ActionDAO actionDAO;
 
 	@Override
 	@Transactional
@@ -46,32 +51,28 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 
 	@Override
 	public List<Potager> showPotager() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Potager>) potaDAO.findAll();
 	}
 
 	@Override
 	public void addAction(Action action) {
-		// TODO Auto-generated method stub
-
+		actionDAO.save(action);
 	}
 
 	@Override
-	public List<Action> showAction() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Action> listActionForTwoWeeks() {
+		LocalDate date = LocalDate.now().plusDays(14);
+		return actionDAO.listAction(date);
 	}
 
 	@Override
-	public Integer getPotagerByPlanteName() {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer getPotagerByPlant(String plantName) {
+		return potaDAO.getPotagerFromPlante(plantName);
 	}
 
 	@Override
 	public void deletePlan(Integer id) {
-		// TODO Auto-generated method stub
-
+		planDAO.deleteById(id);
 	}
 
 }

@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.potager.bo.Carre;
 import com.example.potager.bo.Potager;
-import com.example.potager.bo.TypeSol;
 import com.example.potager.dal.PotagerDAO;
 
 @Service
@@ -40,9 +38,4 @@ public class PotagerManagerImpl implements PotagerManager {
 	public Potager getById(Integer id) {
 		return dao.findById(id).orElse(null);
 	}
-	
-	public Integer getPotagerByPlant(String plantName){
-		return dao.getPotagerFromPlante(plantName);
-	}
-
 }

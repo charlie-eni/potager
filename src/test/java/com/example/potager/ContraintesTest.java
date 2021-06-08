@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.potager.bll.ActionManager;
 import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.PlanteManager;
@@ -25,9 +24,6 @@ class ContraintesTest {
 
 	@Autowired
 	PlanteManager planteManager;
-	
-	@Autowired
-	ActionManager actionManager;
 	
 	@Test
 	void surfaceCarreInferieurSurfacePotager() throws CarreException {

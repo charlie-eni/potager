@@ -1,6 +1,9 @@
 package com.example.potager;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -8,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.potager.bll.ActionManager;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.GestionPotagerManager;
 import com.example.potager.bll.PlanteManager;
@@ -34,9 +36,6 @@ class FonctionnalitesTests {
 	PlanteManager planteManager;
 	
 	@Autowired
-	ActionManager actionManager;
-	
-	@Autowired
 	GestionPotagerManager gestionManager;
 
 	@Test
@@ -47,6 +46,15 @@ class FonctionnalitesTests {
 		PlanteIntoCarre plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
 		Carre carre = new Carre(500, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager);
 		gestionManager.addPlanteToPotager(potager, plante, carre, plan);
+	}
+	
+	@Test
+	@Transactional
+	void visualisationPotager() {
+		Potager potager = new Potager("ici", "Potager de test", 1000, "Quimper");
+		potaManager.addPotager(potager);
+		List<Potager> lst = gestionManager.showPotager();
+		assertNotNull(lst);
 	}
 	
 }

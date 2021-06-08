@@ -17,6 +17,4 @@ public interface PotagerManager {
 	public List<Potager> getAllPotager();
 	
 	public Potager getById(Integer id);
-	
-	public Integer getPotagerByPlant(String plantName);
 }

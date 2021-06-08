@@ -16,9 +16,9 @@ public interface GestionPotagerManager {
 
 	public void addAction(Action action);
 
-	public List<Action> showAction();
+	public List<Action> listActionForTwoWeeks();
 
-	public Integer getPotagerByPlanteName();
+	public Integer getPotagerByPlant(String plantName);
 
 	public void deletePlan(Integer id);
 }
