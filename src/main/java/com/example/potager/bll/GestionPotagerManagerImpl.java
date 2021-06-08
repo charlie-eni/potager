@@ -31,7 +31,7 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 
 	@Autowired
 	PlanteDAO planteDAO;
-	
+
 	@Autowired
 	PlanteManager planteManager;
 
@@ -43,31 +43,31 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 
 	@Override
 	@Transactional
-	public void addPlanteToPotager(Potager potager, Plante plante, Carre carre, PlanteIntoCarre plan) throws PlanteIntoCarreException {
-		
-		
+	public void addPlanteToPotager(Potager potager, Plante plante, Carre carre, PlanteIntoCarre plan)
+			throws PlanteIntoCarreException {
+
 		List<Plante> lstPlante = planteManager.getAllPlante();
 		List<Integer> lstSurface = new ArrayList<Integer>();
-		
+
 		for (Plante p : lstPlante) {
-			
-			for(PlanteIntoCarre pic : p.getPlans()) {
-				if(pic.getCarre().getIdCarre() == carre.getIdCarre()) {
-					
-					lstSurface.add( (p.getSurface() * p.getNbPlante()));
+
+			for (PlanteIntoCarre pic : p.getPlans()) {
+				if (pic.getCarre().getIdCarre() == carre.getIdCarre()) {
+
+					lstSurface.add((p.getSurface() * p.getNbPlante()));
 				}
 			}
-				
+
 		}
 		int sum = 0;
-		for(int i = 0; i<lstSurface.size(); i++) {
+		for (int i = 0; i < lstSurface.size(); i++) {
 			sum += lstSurface.get(i);
 		}
-		
-		if((sum + (plante.getSurface()* plante.getNbPlante())) > carre.getSurface()) {
+
+		if ((sum + (plante.getSurface() * plante.getNbPlante())) > carre.getSurface()) {
 			throw new PlanteIntoCarreException("La limite de plante est atteinte pour le carré!");
 		}
-		
+
 		plan.addCarre(carre);
 		plan.addPlante(plante);
 		potager.addCarre(carre);
@@ -75,8 +75,7 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 		planteDAO.save(plante);
 		carDAO.save(carre);
 		potaDAO.save(potager);
-		
-		
+
 	}
 
 	@Override
@@ -86,7 +85,7 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 
 	@Override
 	public void addAction(Action action) throws PlanteIntoCarreException {
-		if(action.getDate().isBefore(LocalDate.now())) {
+		if (action.getDate().isBefore(LocalDate.now())) {
 			throw new PlanteIntoCarreException("La date n'est pas valide");
 		}
 		actionDAO.save(action);

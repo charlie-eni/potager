@@ -11,11 +11,8 @@ import org.springframework.stereotype.Component;
 import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.GestionPotagerManager;
-<<<<<<< Updated upstream
-import com.example.potager.bll.PlanteIntoCarreException;
-=======
 import com.example.potager.bll.PlanteException;
->>>>>>> Stashed changes
+import com.example.potager.bll.PlanteIntoCarreException;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Action;

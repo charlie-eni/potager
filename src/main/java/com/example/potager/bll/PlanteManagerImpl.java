@@ -1,5 +1,6 @@
 package com.example.potager.bll;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,10 @@ public class PlanteManagerImpl implements PlanteManager {
 	@Override
 	public void addPlante(Plante plante) throws PlanteException {
 
+		List<Plante> lst = new ArrayList<Plante>();
+		
+		
+		
 		Optional<Plante> doublon = dao.findByNomAndVariete(plante.getNom(), plante.getVariete());
 		if (doublon.isPresent()) {
 			throw new PlanteException("Pas de doublons de plantes");

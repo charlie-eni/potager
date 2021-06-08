@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.GestionPotagerManager;
+import com.example.potager.bll.PlanteException;
 import com.example.potager.bll.PlanteIntoCarreException;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bll.PotagerManager;
@@ -83,6 +84,16 @@ class ContraintesTest {
 		
 		Action action2 = new Action(LocalDate.now().minusDays(1), "Arrosage", "carré 1");
 		gestionManager.addAction(action2);
-
+	}
+	
+	@Test
+	@Transactional
+	void pasDeDoublonPlante() throws PlanteException {
+		Plante planteA = new Plante("Pommier", Type.fruit, "Golden", 200, 1, LocalDate.now());
+		
+		Plante planteB = new Plante("Pommier", Type.fruit, "Golden", 250, 1, LocalDate.now());
+		
+		planteManager.addPlante(planteA);
+		planteManager.addPlante(planteB);
 	}
 }
