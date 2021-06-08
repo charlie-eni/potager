@@ -8,12 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idPotager")
 public class Potager {
 
 	@Id
@@ -24,6 +30,8 @@ public class Potager {
 	private Integer surface;
 	private String ville;
 
+	
+	
 	@OneToMany(mappedBy = "potager")
 	private List<Carre> carre;
 

@@ -50,7 +50,7 @@ public class DBinit {
 
 		Potager potager = new Potager("serre", "Premier potager", 1500, "Quimper");
 		potagerMger.addPotager(potager);
-		Potager potager2 = new Potager("serre", "second potager", 50, "brest");
+		Potager potager2 = new Potager("serre", "second potager", 500, "brest");
 		potagerMger.addPotager(potager2);
 
 		Carre carre = new Carre(1000, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager);
@@ -75,7 +75,7 @@ public class DBinit {
 		carreMger.addCarre(carre2);
 		planDAO.save(plan2);
 		
-		Integer idCarre = potagerMger.getPotagerByPlant("Carotte");
+		Integer idCarre = potagerMger.getPotagerByPlant("Tomate");
 		System.out.println(idCarre);
 		
 	}

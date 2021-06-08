@@ -36,6 +36,7 @@ public class CarreManagerImpl implements CarreManager {
 		if((sum + carre.getSurface()) > carre.getPotager().getSurface()) {
 			throw new CarreException("La surface des carrés est plus importante que le Potager");
 		}
+		
 		dao.save(carre);
 	}
 

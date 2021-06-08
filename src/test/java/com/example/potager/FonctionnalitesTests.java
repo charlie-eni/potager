@@ -141,8 +141,4 @@ class FonctionnalitesTests {
 		assertEquals(potagers.size(),1);
 	}*/
 	
-=======
->>>>>>> ebf2315cea18dbad94018edcfcb364560aa1b3a6
-
-	
 }
