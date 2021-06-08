@@ -118,14 +118,6 @@ class FonctionnalitesTests {
 		assertEquals(actions.size(),1);
 	}*/
 	
-//	Visualiser la localisation d’une plante (nom ou nom et variété) dans les potagers
-//	(potager, carré, quantité etc.)
-	@Test
-	@Transactional
-	void getPotagerByPlant() {
-		List<Potager> potagers = potaManager.getPotagerByPlant("Toomate");
-		assertEquals(potagers.size(),1);
-	}
-	
 
+	
 }

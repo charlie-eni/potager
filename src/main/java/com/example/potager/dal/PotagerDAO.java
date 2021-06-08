@@ -10,6 +10,6 @@ import com.example.potager.bo.Potager;
 
 public interface PotagerDAO extends CrudRepository<Potager, Integer> {
 
-	@Query("SELECT p FROM Potager p, Plante a WHERE a.nom =:plantName")
+	@Query("SELECT p FROM Potager p")
 	List<Potager> getPotagerFromPlante(@Param("plantName") String plantName);
 }
