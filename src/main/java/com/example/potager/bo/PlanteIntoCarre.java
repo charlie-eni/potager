@@ -17,9 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class PlanteIntoCarre {
 
 	@Id
@@ -35,20 +33,19 @@ public class PlanteIntoCarre {
 	private Integer quantite;
 	private LocalDate dateMiseEnPlace;
 	private LocalDate dateRecolte;
-	
-	
+
 	public PlanteIntoCarre(Integer quantite, LocalDate dateMiseEnPlace, LocalDate dateRecolte) {
 		super();
 		this.quantite = quantite;
 		this.dateMiseEnPlace = dateMiseEnPlace;
 		this.dateRecolte = dateRecolte;
 	}
-	
+
 	public void addPlante(Plante plante) {
 		plante.plans.add(this);
 		this.plante = plante;
 	}
-	
+
 	public void addCarre(Carre carre) {
 		carre.plans.add(this);
 		this.carre = carre;

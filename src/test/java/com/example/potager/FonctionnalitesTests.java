@@ -34,7 +34,7 @@ class FonctionnalitesTests {
 
 	@Autowired
 	PlanteManager planteManager;
-	
+
 	@Autowired
 	GestionPotagerManager gestionManager;
 
@@ -47,7 +47,7 @@ class FonctionnalitesTests {
 		Carre carre = new Carre(500, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager);
 		gestionManager.addPlanteToPotager(potager, plante, carre, plan);
 	}
-	
+
 	@Test
 	@Transactional
 	void visualisationPotager() {
@@ -56,5 +56,5 @@ class FonctionnalitesTests {
 		List<Potager> lst = gestionManager.showPotager();
 		assertNotNull(lst);
 	}
-	
+
 }

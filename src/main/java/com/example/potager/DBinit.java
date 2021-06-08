@@ -1,7 +1,6 @@
 package com.example.potager;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
@@ -9,9 +8,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.example.potager.bll.ActionManager;
 import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
+import com.example.potager.bll.GestionPotagerManager;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Action;
@@ -28,9 +27,6 @@ import com.example.potager.dal.PlanteIntoCarreDAO;
 public class DBinit {
 
 	@Autowired
-	ActionManager actionMger;
-
-	@Autowired
 	PlanteManager planteMger;
 
 	@Autowired
@@ -42,11 +38,14 @@ public class DBinit {
 	@Autowired
 	PlanteIntoCarreDAO planDAO;
 
+	@Autowired
+	GestionPotagerManager gestionMger;
+
 	@PostConstruct
 	@Transactional
 	private void postConstruct() throws CarreException {
-		actionMger.addAction(new Action(LocalDate.now(), "NOW!", "fdsfds"));
-		actionMger.addAction(new Action(LocalDate.now().plusMonths(1), "Dans un mois", "fdsfds"));
+		gestionMger.addAction(new Action(LocalDate.now(), "NOW!", "fdsfds"));
+		gestionMger.addAction(new Action(LocalDate.now().plusMonths(1), "Dans un mois", "fdsfds"));
 
 		Potager potager = new Potager("serre", "Premier potager", 1500, "Quimper");
 		potagerMger.addPotager(potager);
@@ -74,10 +73,10 @@ public class DBinit {
 		planteMger.addPlante(plante2);
 		carreMger.addCarre(carre2);
 		planDAO.save(plan2);
-		
-		Integer idCarre = potagerMger.getPotagerByPlant("Tomate");
+
+		Integer idCarre = gestionMger.getPotagerByPlant("Tomate");
 		System.out.println(idCarre);
-		
+
 	}
 
 }

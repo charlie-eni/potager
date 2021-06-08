@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -21,17 +20,15 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idPlante")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idPlante")
 public class Plante {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idPlante;
-	
+
 	@OneToMany(mappedBy = "plante", fetch = FetchType.EAGER)
-    List<PlanteIntoCarre> plans;
+	List<PlanteIntoCarre> plans;
 
 	private String nom;
 	private Type type;
@@ -40,8 +37,7 @@ public class Plante {
 	private Integer nbPlante;
 	private LocalDate miseEnPlace;
 
-	public Plante(String nom, Type type, String variete, Integer surface, Integer nbPlante,
-			LocalDate miseEnPlace) {
+	public Plante(String nom, Type type, String variete, Integer surface, Integer nbPlante, LocalDate miseEnPlace) {
 		super();
 		this.plans = new ArrayList<PlanteIntoCarre>();
 		this.nom = nom;

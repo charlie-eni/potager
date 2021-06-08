@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -21,18 +20,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idCarre")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idCarre")
 public class Carre {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idCarre;
-	
+
 	@OneToMany(mappedBy = "carre", fetch = FetchType.EAGER)
-    List<PlanteIntoCarre> plans;
-	
+	List<PlanteIntoCarre> plans;
+
 	private Integer surface;
 	private TypeSol typeSol;
 	private Exposition typeExposition;
@@ -49,5 +46,4 @@ public class Carre {
 		this.potager = potager;
 	}
 
-	
 }
