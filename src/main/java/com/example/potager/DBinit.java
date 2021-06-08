@@ -74,6 +74,9 @@ public class DBinit {
 		carreMger.addCarre(carre2);
 		planDAO.save(plan2);
 		
+		Integer idCarre = potagerMger.getPotagerByPlant("Carotte");
+		System.out.println(idCarre);
+		
 	}
 
 }
