@@ -1,0 +1,64 @@
+package com.example.potager.ihm;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.potager.bll.CarreException;
+import com.example.potager.bll.CarreManager;
+import com.example.potager.bo.Carre;
+
+public class CarreEcran {
+
+	@Autowired
+	private CarreManager manager;
+
+	@GetMapping("/carre/saisie")
+	public String saisieCarre(Carre carre) {
+		return "les_carres/ajoutCarre";
+	}
+
+	@PostMapping("/carre/ajout")
+	public String ajoutCarre(@Valid Carre carre, BindingResult result, Model model) throws CarreException {
+		if (result.hasErrors()) {
+			return "les_carres/ajoutCarre";
+		}
+		manager.addCarre(carre);
+		return "redirect:/carre/index";
+	}
+
+	@GetMapping("/carre/index")
+	public String listeCarres(Model model) {
+		model.addAttribute("carres", manager.getAllCarre());
+		return "les_carres/indexCarre";
+	}
+
+	@GetMapping("carre/edit/{id}")
+	public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+		Carre carre = manager.getById(id);
+		model.addAttribute("carre", carre);
+		return "les_carres/updateCarre";
+	}
+
+	@PostMapping("carre/update/{id}")
+	public String updateCarre(@PathVariable("id") Integer id, @Valid Carre carre, BindingResult result, Model model) {
+		carre.setIdCarre(id);
+		if (result.hasErrors()) {
+			return "les_carres/updateCarre";
+		}
+		manager.updateCarre(carre, id);
+		return "redirect:/carre/index";
+	}
+
+	@GetMapping("/carre/delete/{id}")
+	public String deleteCarre(@PathVariable("id") Integer id, Model model) {
+		manager.deleteCarreById(id);
+		return "redirect:/carre/index";
+	}
+
+}

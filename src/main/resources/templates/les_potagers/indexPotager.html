@@ -26,7 +26,6 @@
 						<td th:text="${potager.localisation}"></td>
 						<td th:text="${potager.surface}"></td>
 						<td th:text="${potager.ville}"></td>
-						<!-- ici ça veut pas faire de lien ????? -->
 						<td><a th:href="@{/potager/edit/{id} (id=${potager.idPotager})}">Modifier</a></td>
 						<td><a th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</a></td>
 					</tr>

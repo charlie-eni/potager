@@ -46,5 +46,4 @@ public class Carre {
 		this.typeExposition = typeExposition;
 		this.potager = potager;
 	}
-
 }

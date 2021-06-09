@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Potager;
@@ -22,13 +21,13 @@ public class PotagerEcran {
 
 	@GetMapping("/potager/saisie")
 	public String saisiePotager(Potager potager) {
-		return "ajoutPotager";
+		return "les_potagers/ajoutPotager";
 	}
 
 	@PostMapping("/potager/ajout")
 	public String ajoutPotager(@Valid Potager potager, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			return "ajoutPotager";
+			return "les_potagers/ajoutPotager";
 		}
 		manager.addPotager(potager);
 		return "redirect:/potager/index";
@@ -37,14 +36,14 @@ public class PotagerEcran {
 	@GetMapping("/potager/index")
 	public String listePotagers(Model model) {
 		model.addAttribute("potagers", manager.getAllPotager());
-		return "indexPotager";
+		return "les_potagers/indexPotager";
 	}
 
 	@GetMapping("potager/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
 		Potager potager = manager.getById(id);
 		model.addAttribute("potager", potager);
-		return "updatePotager";
+		return "les_potagers/updatePotager";
 	}
 
 	@PostMapping("potager/update/{id}")
@@ -52,7 +51,7 @@ public class PotagerEcran {
 			Model model) {
 		potager.setIdPotager(id);
 		if (result.hasErrors()) {
-			return "updatePotager";
+			return "les_potagers/updatePotager";
 		}
 		manager.updatePotager(potager, id);
 		return "redirect:/potager/index";

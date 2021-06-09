@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mon Potager</title>
+</head>
+<body>
+	<div th:switch="${carres}">
+		<h2 th:case="null">Vous n'avez pas encore ajouté de potager !</h2>
+		<div th:case="*">
+			<h2>Mes potagers</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Surface</th>
+						<th>Type de sol</th>
+						<th>Type d'exposition</th>
+						<th>Modifier</th>
+						<th>Supprimer</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="carre : ${carres}">
+						<td th:text="${carre.surface}"></td>
+						<select>
+							<option
+								th:each="r : ${T(com.example.potager.bo.TypeSol).values()}"
+								th:value="${r}" th:text="${r}"></option>
+						</select>
+						<select>
+							<option
+								th:each="e : ${T(com.example.potager.bo.Exposition).values()}"
+								th:value="${e}" th:text="${e}"></option>
+						</select>
+						<td><a
+							th:href="@{/potager/edit/{id} (id=${potager.idPotager})}">Modifier</a></td>
+						<td><a
+							th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<p>
+			<a href="/potager/saisie">Ajouter un nouveau carre</a>
+		</p>
+	</div>
+</body>
+</html>
