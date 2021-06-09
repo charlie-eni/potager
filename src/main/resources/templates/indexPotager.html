@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mon Potager</title>
+</head>
+<body>
+	<div th:switch="${potagers}">
+		<h2 th:case="null">Vous n'avez pas encore ajouté de potager !</h2>
+		<div th:case="*">
+			<h2>Mes potagers</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Surface</th>
+						<th>Ville</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
