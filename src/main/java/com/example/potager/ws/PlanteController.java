@@ -5,7 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.potager.bll.PlanteException;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bo.Plante;
 
@@ -23,5 +27,13 @@ public class PlanteController {
 	@GetMapping("/api/plante/{id}")
 	public Plante one(@PathVariable Integer id) {
 		return planteManager.getById(id);
+	}
+	
+	@PostMapping("/api/plante")
+	public Plante create(@RequestBody Plante plante) throws PlanteException {
+		
+		planteManager.addPlante(plante);
+		return plante;
+		
 	}
 }

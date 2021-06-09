@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Potager;
@@ -24,6 +26,13 @@ public class PotagerController {
 	@GetMapping("/api/potager/{id}")
 	public Potager one(@PathVariable Integer id) {
 		return potagerManager.getById(id);
+	}
+	
+	@PostMapping("/api/potager")
+	public Potager create(@RequestBody Potager potager) {
+		
+		potagerManager.addPotager(potager);
+		return potager;
 	}
 	
 }
