@@ -49,8 +49,10 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 
 		List<Plante> lstPlante = planteManager.getAllPlante();
 		List<Integer> lstSurface = new ArrayList<Integer>();
-		int nbPlan = carre.getPlans().size();
-		Optional<Plante> nomPlante = planteDAO.findDistinctByNom(plante.getNom());
+
+		List<Plante> lstNomPlante = new ArrayList<Plante>();
+
+
 		for (Plante p : lstPlante) {
 
 			for (PlanteIntoCarre pic : p.getPlans()) {
@@ -58,9 +60,12 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 					
 					lstSurface.add((p.getSurface() * p.getNbPlante()));
 				}
-				if (nbPlan > 3 && nomPlante.equals(plante.getNom())) {
-					throw new CarreException("Pas plus de 3 plantes (du même nom) dans un carré !");
+
+				
+				if( pic.getPlante().getNom().equals(plante.getNom())) {
+					lstNomPlante.add(pic.getPlante());
 				}
+				
 			}
 		}
 
@@ -72,6 +77,13 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 		if ((sum + (plante.getSurface() * plante.getNbPlante())) > carre.getSurface()) {
 			throw new PlanteIntoCarreException("La limite de plante est atteinte pour le carré!");
 		}
+
+
+		if( 3 < (lstNomPlante.size() + 1)) {
+			throw new PlanteIntoCarreException("Vous avez atteint le maximum de " + plante.getNom() + " pour ce carré");
+		}
+
+
 		
 //		Optional<Plante> nomPlante = planteDAO.findDistinctByNom(plante.getNom());
 //		
@@ -83,6 +95,7 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 		
 		
 		
+
 		plan.addCarre(carre);
 		plan.addPlante(plante);
 		potager.addCarre(carre);
