@@ -8,7 +8,7 @@ public interface PotagerManager {
 
 	public void addPotager(Potager potager);
 
-	public void updatePotager(Potager potager);
+	public void updatePotager(Potager potager, Integer id);
 
 	public void deletePotager(Potager potager);
 
