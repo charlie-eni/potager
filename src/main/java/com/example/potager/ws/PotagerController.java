@@ -3,6 +3,7 @@ package com.example.potager.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +43,16 @@ public class PotagerController {
 		potagerManager.updatePotager(potager, id);
 		
 		return potager;
+		
+	}
+	
+	@DeleteMapping("/api/potager/{id}")
+	public String delete(@PathVariable Integer id){
+		
+		Potager p = potagerManager.getById(id);
+		potagerManager.deletePotager(p);
+		
+		return "Le Potager répondant au nom de " + p.getNom() + " a bien été supprimé";
 		
 	}
 	
