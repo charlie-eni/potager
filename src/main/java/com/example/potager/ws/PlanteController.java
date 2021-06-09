@@ -3,6 +3,7 @@ package com.example.potager.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +44,15 @@ public class PlanteController {
 		
 		planteManager.updatePlante(plante, id);
 		return plante;
+		
+	}
+	
+	@DeleteMapping("/api/plante/{id}")
+	public String delete(@PathVariable Integer id) {
+		
+		Plante p = planteManager.getById(id);
+		planteManager.deletePlante(id);
+		return "La Plante répondant au nom de " + p.getNom() + " et variété " + p.getVariete() + " a bien été supprimé";
 		
 	}
 }

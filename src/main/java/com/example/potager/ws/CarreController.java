@@ -3,6 +3,7 @@ package com.example.potager.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,15 @@ public class CarreController {
 		
 		carreManager.updateCarre(carre, id);
 		return carre;
+		
+	}
+	
+	@DeleteMapping("/api/carre/{id}")
+	public String delete(@PathVariable Integer id) {
+		
+		Carre c = carreManager.getById(id);
+		carreManager.deleteCarre(c);
+		return "Le Carré répondant a l'id " + c.getIdCarre() + " a bien été supprimé";
 		
 	}
 }
