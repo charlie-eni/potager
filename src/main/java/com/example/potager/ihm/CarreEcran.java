@@ -3,6 +3,7 @@ package com.example.potager.ihm;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bo.Carre;
 
+@Controller
 public class CarreEcran {
 
 	@Autowired
@@ -53,7 +55,7 @@ public class CarreEcran {
 		}
 		manager.updateCarre(carre, id);
 		return "redirect:/carre/index";
-	}
+	} 
 
 	@GetMapping("/carre/delete/{id}")
 	public String deleteCarre(@PathVariable("id") Integer id, Model model) {

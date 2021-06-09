@@ -6,9 +6,9 @@
 </head>
 <body>
 	<div th:switch="${carres}">
-		<h2 th:case="null">Vous n'avez pas encore ajouté de potager !</h2>
+		<h2 th:case="null">Vous n'avez pas encore ajouté de carré !</h2>
 		<div th:case="*">
-			<h2>Mes potagers</h2>
+			<h2>Mes carrés</h2>
 			<table>
 				<thead>
 					<tr>
@@ -22,7 +22,7 @@
 				<tbody>
 					<tr th:each="carre : ${carres}">
 						<td th:text="${carre.surface}"></td>
-						<select>
+						 <!-- <select>
 							<option
 								th:each="r : ${T(com.example.potager.bo.TypeSol).values()}"
 								th:value="${r}" th:text="${r}"></option>
@@ -31,17 +31,17 @@
 							<option
 								th:each="e : ${T(com.example.potager.bo.Exposition).values()}"
 								th:value="${e}" th:text="${e}"></option>
-						</select>
-						<td><a
-							th:href="@{/potager/edit/{id} (id=${potager.idPotager})}">Modifier</a></td>
-						<td><a
-							th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</a></td>
+						</select>-->
+						<td th:text="${carre.typeSol}"></td>
+						<td th:text="${carre.typeExposition}"></td>
+						<td><a th:href="@{/carre/edit/{id} (id=${carre.idCarre})}">Modifier</a></td>
+						<td><a th:href="@{/carre/delete/{id} (id=${carre.idCarre})}">Supprimer</a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<p>
-			<a href="/potager/saisie">Ajouter un nouveau carre</a>
+			<a href="/carre/saisie">Ajouter un nouveau carré</a>
 		</p>
 	</div>
 </body>
