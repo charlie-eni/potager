@@ -3,6 +3,7 @@ package com.example.potager.bll;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -44,27 +45,30 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 	@Override
 	@Transactional
 	public void addPlanteToPotager(Potager potager, Plante plante, Carre carre, PlanteIntoCarre plan)
-			throws PlanteIntoCarreException {
+			throws PlanteIntoCarreException, CarreException {
 
 		List<Plante> lstPlante = planteManager.getAllPlante();
 		List<Integer> lstSurface = new ArrayList<Integer>();
+
 		List<Plante> lstNomPlante = new ArrayList<Plante>();
+
 
 		for (Plante p : lstPlante) {
 
 			for (PlanteIntoCarre pic : p.getPlans()) {
 				if (pic.getCarre().getIdCarre() == carre.getIdCarre()) {
-
+					
 					lstSurface.add((p.getSurface() * p.getNbPlante()));
 				}
+
 				
 				if( pic.getPlante().getNom().equals(plante.getNom())) {
 					lstNomPlante.add(pic.getPlante());
 				}
 				
 			}
-
 		}
+
 		int sum = 0;
 		for (int i = 0; i < lstSurface.size(); i++) {
 			sum += lstSurface.get(i);
@@ -74,9 +78,23 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 			throw new PlanteIntoCarreException("La limite de plante est atteinte pour le carré!");
 		}
 
+
 		if( 3 < (lstNomPlante.size() + 1)) {
 			throw new PlanteIntoCarreException("Vous avez atteint le maximum de " + plante.getNom() + " pour ce carré");
 		}
+
+
+		
+//		Optional<Plante> nomPlante = planteDAO.findDistinctByNom(plante.getNom());
+//		
+//		for(Plante) {
+//		if(nbPlan > 3 && ) {
+//			throw new CarreException("Pas plus de 3 plantes (du même nom) dans un carré !");
+//		}	
+//		}
+		
+		
+		
 
 		plan.addCarre(carre);
 		plan.addPlante(plante);
@@ -85,6 +103,7 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 		planteDAO.save(plante);
 		carDAO.save(carre);
 		potaDAO.save(potager);
+		System.out.println(nbPlan);
 	}
 
 	@Override

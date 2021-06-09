@@ -1,12 +1,17 @@
 package com.example.potager;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDate;
 
+import javax.transaction.TransactionScoped;
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.GestionPotagerManager;
 import com.example.potager.bll.PlanteException;
@@ -89,6 +94,8 @@ class ContraintesTest {
 	@Test
 	@Transactional
 	void pasDeDoublonPlante() throws PlanteException {
+		System.out.println("======== Contrainte doublon plante ========");
+		
 		Plante planteA = new Plante("Pommier", Type.fruit, "Golden", 200, 1, LocalDate.now());
 		
 		Plante planteB = new Plante("Pommier", Type.fruit, "Golden", 250, 1, LocalDate.now());
@@ -99,6 +106,7 @@ class ContraintesTest {
 	
 	@Test
 	@Transactional
+
 	void pasPlusDeTroisPlantesDuMemeNom() throws PlanteIntoCarreException {
 		System.out.println("======== Contrainte plante Nom ========");
 		Potager potager = new Potager("ici", "Potager de test", 10000, "Quimper");
@@ -112,5 +120,9 @@ class ContraintesTest {
 		gestionManager.addPlanteToPotager(potager, plante2, carre, plan);
 		gestionManager.addPlanteToPotager(potager, plante3, carre, plan);
 		gestionManager.addPlanteToPotager(potager, plante4, carre, plan);
+
+
 	}
+	
+	
 }

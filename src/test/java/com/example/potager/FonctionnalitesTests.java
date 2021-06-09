@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.GestionPotagerManager;
 import com.example.potager.bll.PlanteIntoCarreException;
@@ -41,7 +42,7 @@ class FonctionnalitesTests {
 
 	@Test
 	@Transactional
-	void addPlantesToPotager() throws PlanteIntoCarreException {
+	void addPlantesToPotager() throws PlanteIntoCarreException, CarreException {
 		Potager potager = new Potager("ici", "Potager de test", 1000, "Quimper");
 		Plante plante = new Plante("Pommier", Type.fruit, "Golden", 200, 1, LocalDate.now());
 		PlanteIntoCarre plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
