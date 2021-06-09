@@ -107,13 +107,13 @@ class ContraintesTest {
 	@Test
 	@Transactional
 
-	void pasPlusDeTroisPlantesDuMemeNom() throws PlanteIntoCarreException {
+	void pasPlusDeTroisPlantesDuMemeNom() throws PlanteIntoCarreException, CarreException {
 		System.out.println("======== Contrainte plante Nom ========");
 		Potager potager = new Potager("ici", "Potager de test", 10000, "Quimper");
 		Plante plante = new Plante("Cerise", Type.fruit, "Golden", 200, 1, LocalDate.now());
 		Plante plante2 = new Plante("Cerise", Type.fruit, "Citron", 200, 1, LocalDate.now());
 		Plante plante3 = new Plante("Cerise", Type.fruit, "Melba", 200, 1, LocalDate.now());
-		Plante plante4 = new Plante("Cerise", Type.fruit, "rouge", 200, 1, LocalDate.now());
+		Plante plante4 = new Plante("Pommier", Type.fruit, "rouge", 200, 1, LocalDate.now());
 		PlanteIntoCarre plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
 		Carre carre = new Carre(900, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager);
 		gestionManager.addPlanteToPotager(potager, plante, carre, plan);
