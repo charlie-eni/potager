@@ -13,7 +13,7 @@
     <input type="text" th:field="*{localisation}" id="localisation" placeholder="Localisation">
     <span th:if="${#fields.hasErrors('localisation')}" th:errors="*{localisation}"></span>
     <label for="nom">Surface</label>
-    <input type="number" th:field="*{surface}" id="surface" placeholder="Surface">
+    <input type="text" th:field="*{surface}" id="surface" placeholder="Surface">
     <span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
     <label for="nom">Ville</label>
     <input type="text" th:field="*{ville}" id="ville" placeholder="Ville">

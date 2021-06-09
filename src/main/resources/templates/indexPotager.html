@@ -24,16 +24,18 @@
 					<tr th:each="potager : ${potagers}">
 						<td th:text="${potager.nom}"></td>
 						<td th:text="${potager.localisation}"></td>
-						<td th:number="${potager.surface}"></td>
-						<td th:text="$potager.ville"></td>
-						<td th:href="@{/potager/edit/{id} (id=${potager.idPotager})}">Modifier</td>
-						<td th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</td>
+						<td th:text="${potager.surface}"></td>
+						<td th:text="${potager.ville}"></td>
+						<td><a
+							th:href="@{/potager/edit/{id} (id=${potager.idPotager})}"></a>Modifier</td>
+						<td><a
+							th:href="@{/potager/delete/{id} (id=${potager.idPotager})}"></a>Supprimer</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<p>
-			<a href="/potager/ajout">Ajouter un nouveau potager</a>
+			<a href="/potager/saisie">Ajouter un nouveau potager</a>
 		</p>
 	</div>
 </body>

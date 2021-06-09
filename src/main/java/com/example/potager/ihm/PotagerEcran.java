@@ -51,13 +51,13 @@ public class PotagerEcran {
 	public String updatePotager(@PathVariable("id") Integer id, @Valid Potager potager, BindingResult result,
 			Model model) {
 		potager.setIdPotager(id);
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return "updatePotager";
 		}
 		manager.updatePotager(potager, id);
 		return "redirect:/potager/index";
 	}
-	
+
 	@DeleteMapping("/potager/delete/{id}")
 	public String deletePotager(@PathVariable("id") Integer id, Model model) {
 		manager.deletePotagerById(id);

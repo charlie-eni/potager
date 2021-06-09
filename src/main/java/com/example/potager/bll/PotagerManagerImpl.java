@@ -42,6 +42,6 @@ public class PotagerManagerImpl implements PotagerManager {
 
 	@Override
 	public void deletePotagerById(Integer id) {
-		dao.deleteById(id);		
+		dao.deleteById(id);
 	}
 }
