@@ -26,10 +26,9 @@
 						<td th:text="${potager.localisation}"></td>
 						<td th:text="${potager.surface}"></td>
 						<td th:text="${potager.ville}"></td>
-						<td><a
-							th:href="@{/potager/edit/{id} (id=${potager.idPotager})}"></a>Modifier</td>
-						<td><a
-							th:href="@{/potager/delete/{id} (id=${potager.idPotager})}"></a>Supprimer</td>
+						<!-- ici ça veut pas faire de lien ????? -->
+						<td><a th:href="@{/potager/edit/{id} (id=${potager.idPotager})}">Modifier</a></td>
+						<td><a th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</a></td>
 					</tr>
 				</tbody>
 			</table>

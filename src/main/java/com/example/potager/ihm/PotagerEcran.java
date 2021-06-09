@@ -58,7 +58,7 @@ public class PotagerEcran {
 		return "redirect:/potager/index";
 	}
 
-	@DeleteMapping("/potager/delete/{id}")
+	@DeleteMapping("/potager/delete/{id}") 
 	public String deletePotager(@PathVariable("id") Integer id, Model model) {
 		manager.deletePotagerById(id);
 		return "redirect:/potager/index";
