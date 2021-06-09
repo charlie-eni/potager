@@ -1,12 +1,17 @@
 package com.example.potager;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDate;
 
+import javax.transaction.TransactionScoped;
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bll.GestionPotagerManager;
 import com.example.potager.bll.PlanteException;
@@ -72,7 +77,7 @@ class ContraintesTest {
 		gestionManager.addPlanteToPotager(potager, plante, carre, plan);
 		gestionManager.addPlanteToPotager(potager, plante2, carre, plan);
 		gestionManager.addPlanteToPotager(potager, plante3, carre, plan);
-	}*/
+	}
 
 	@Test
 	@Transactional
@@ -89,11 +94,42 @@ class ContraintesTest {
 	@Test
 	@Transactional
 	void pasDeDoublonPlante() throws PlanteException {
+		System.out.println("======== Contrainte doublon plante ========");
+		
 		Plante planteA = new Plante("Pommier", Type.fruit, "Golden", 200, 1, LocalDate.now());
 		
 		Plante planteB = new Plante("Pommier", Type.fruit, "Golden", 250, 1, LocalDate.now());
 		
 		planteManager.addPlante(planteA);
 		planteManager.addPlante(planteB);
+	}*/
+	
+	@Test
+	@Transactional
+	void pasPlusDeTroisPlantesDuMemeNomDansCarre() throws PlanteIntoCarreException, CarreException {
+	Potager potager = new Potager("ici", "Potager de test", 1000, "Quimper");
+	Plante plante = new Plante("Pommier", Type.fruit, "Golden", 200, 1, LocalDate.now());
+	PlanteIntoCarre plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
+	
+	Plante plante2 = new Plante("Pommier", Type.fruit, "Pink Lady", 200, 1 ,LocalDate.now());
+	PlanteIntoCarre plan2 = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusYears(5));
+	
+	Plante plante3 = new Plante("Pommier", Type.fruit, "Gala", 200, 1 ,LocalDate.now());
+	PlanteIntoCarre plan3 = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusYears(5));
+	
+	Plante plante4 = new Plante("Pecher", Type.fruit, "blanche", 200, 1 ,LocalDate.now());
+	PlanteIntoCarre plan4 = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusYears(5));
+	
+	Carre carre = new Carre(500, TypeSol.CALCAIRE, Exposition.MI_OMBRE, potager);
+	
+	gestionManager.addPlanteToPotager(potager, plante, carre, plan);
+	gestionManager.addPlanteToPotager(potager, plante2, carre, plan2);
+	gestionManager.addPlanteToPotager(potager, plante3, carre, plan3);
+	gestionManager.addPlanteToPotager(potager, plante4, carre, plan4);
+	
+	
+	// assertEquals(carre.getPlans().size(), 1);
 	}
+	
+	
 }

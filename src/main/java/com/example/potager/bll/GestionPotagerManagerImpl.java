@@ -44,7 +44,7 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 	@Override
 	@Transactional
 	public void addPlanteToPotager(Potager potager, Plante plante, Carre carre, PlanteIntoCarre plan)
-			throws PlanteIntoCarreException {
+			throws PlanteIntoCarreException, CarreException {
 
 		List<Plante> lstPlante = planteManager.getAllPlante();
 		List<Integer> lstSurface = new ArrayList<Integer>();
@@ -57,8 +57,8 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 					lstSurface.add((p.getSurface() * p.getNbPlante()));
 				}
 			}
-
 		}
+
 		int sum = 0;
 		for (int i = 0; i < lstSurface.size(); i++) {
 			sum += lstSurface.get(i);
@@ -67,7 +67,12 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 		if ((sum + (plante.getSurface() * plante.getNbPlante())) > carre.getSurface()) {
 			throw new PlanteIntoCarreException("La limite de plante est atteinte pour le carré!");
 		}
-
+		
+		int nbPlan = carre.getPlans().size();
+		if(nbPlan > 3 /*&&*/) {
+			throw new CarreException("Pas plus de 3 plantes (du même nom) dans un carré !");
+		}
+		
 		plan.addCarre(carre);
 		plan.addPlante(plante);
 		potager.addCarre(carre);
@@ -75,6 +80,7 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 		planteDAO.save(plante);
 		carDAO.save(carre);
 		potaDAO.save(potager);
+		System.out.println(nbPlan);
 	}
 
 	@Override
