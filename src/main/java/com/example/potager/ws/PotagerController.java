@@ -19,7 +19,7 @@ public class PotagerController {
 	@Autowired
 	PotagerManager potagerManager;
 	
-	@GetMapping("/api/Potager")
+	@GetMapping("/api/potager")
 	public List<Potager> getPotager() {
 		return potagerManager.getAllPotager();
 	}

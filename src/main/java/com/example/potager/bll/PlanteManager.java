@@ -11,7 +11,7 @@ public interface PlanteManager {
 
 	public void addPlanteToCarre(Plante plante, Carre carre) throws PlanteException;
 
-	public void updatePlante(Plante plante);
+	public void updatePlante(Plante plante, Integer id);
 
 	public void deletePlante(Integer id);
 

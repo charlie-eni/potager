@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +34,14 @@ public class PlanteController {
 	public Plante create(@RequestBody Plante plante) throws PlanteException {
 		
 		planteManager.addPlante(plante);
+		return plante;
+		
+	}
+	
+	@PutMapping("/api/plante/{id}")
+	public Plante update(@RequestBody Plante plante, @PathVariable Integer id) {
+		
+		planteManager.updatePlante(plante, id);
 		return plante;
 		
 	}

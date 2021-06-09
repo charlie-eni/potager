@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +35,14 @@ public class CarreController {
 	public Carre create(@RequestBody Carre carre) throws CarreException {
 		
 		carreManager.addCarre(carre);
+		return carre;
+		
+	}
+	
+	@PutMapping("/api/carre/{id}")
+	public Carre update(@RequestBody Carre carre, @PathVariable Integer id) {
+		
+		carreManager.updateCarre(carre, id);
 		return carre;
 		
 	}
