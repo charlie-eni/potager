@@ -10,5 +10,5 @@ public interface PlanteDAO extends CrudRepository<Plante, Integer> {
 
 	Optional<Plante> findByNomAndVariete(String nom, String variete);
 
-	Optional<Plante> findByNom(String nom);
+	Optional<Plante> findDistinctByNom(String nom);
 }

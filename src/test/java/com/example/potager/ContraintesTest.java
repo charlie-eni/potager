@@ -107,15 +107,16 @@ class ContraintesTest {
 	@Test
 	@Transactional
 	void pasPlusDeTroisPlantesDuMemeNomDansCarre() throws PlanteIntoCarreException, CarreException {
-	Potager potager = new Potager("ici", "Potager de test", 1000, "Quimper");
+	Potager potager = new Potager("ici", "Potager de test", 2000, "Quimper");
+	
 	Plante plante = new Plante("Pommier", Type.fruit, "Golden", 200, 1, LocalDate.now());
 	PlanteIntoCarre plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
 	
 	Plante plante2 = new Plante("Pommier", Type.fruit, "Pink Lady", 200, 1 ,LocalDate.now());
 	PlanteIntoCarre plan2 = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusYears(5));
 	
-	Plante plante3 = new Plante("Pommier", Type.fruit, "Gala", 200, 1 ,LocalDate.now());
-	PlanteIntoCarre plan3 = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusYears(5));
+//	Plante plante3 = new Plante("Pommier", Type.fruit, "Gala", 200, 1 ,LocalDate.now());
+//	PlanteIntoCarre plan3 = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusYears(5));
 	
 	Plante plante4 = new Plante("Pecher", Type.fruit, "blanche", 200, 1 ,LocalDate.now());
 	PlanteIntoCarre plan4 = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusYears(5));
@@ -124,11 +125,11 @@ class ContraintesTest {
 	
 	gestionManager.addPlanteToPotager(potager, plante, carre, plan);
 	gestionManager.addPlanteToPotager(potager, plante2, carre, plan2);
-	gestionManager.addPlanteToPotager(potager, plante3, carre, plan3);
+	// gestionManager.addPlanteToPotager(potager, plante3, carre, plan3);
 	gestionManager.addPlanteToPotager(potager, plante4, carre, plan4);
 	
 	
-	// assertEquals(carre.getPlans().size(), 1);
+	// assertEquals(carre.getPlans().size(), 4);
 	}
 	
 	
