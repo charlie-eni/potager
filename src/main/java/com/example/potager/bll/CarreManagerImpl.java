@@ -49,7 +49,8 @@ public class CarreManagerImpl implements CarreManager {
 	}
 
 	@Override
-	public void updateCarre(Carre carre) {
+	public void updateCarre(Carre carre, Integer id) {
+		carre.setIdCarre(id);
 		dao.save(carre);
 	}
 

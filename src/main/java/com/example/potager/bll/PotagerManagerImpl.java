@@ -20,7 +20,8 @@ public class PotagerManagerImpl implements PotagerManager {
 	}
 
 	@Override
-	public void updatePotager(Potager potager) {
+	public void updatePotager(Potager potager, Integer id) {
+		potager.setIdPotager(id);
 		dao.save(potager);
 	}
 

@@ -12,7 +12,7 @@ public interface CarreManager {
 
 	public void removeCarreById(Integer id);
 
-	public void updateCarre(Carre carre);
+	public void updateCarre(Carre carre, Integer id);
 
 	public Carre getById(Integer id);
 

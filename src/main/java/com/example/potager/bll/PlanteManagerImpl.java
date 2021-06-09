@@ -32,7 +32,8 @@ public class PlanteManagerImpl implements PlanteManager {
 	}
 
 	@Override
-	public void updatePlante(Plante plante) {
+	public void updatePlante(Plante plante, Integer id) {
+		plante.setIdPlante(id);
 		dao.save(plante);
 	}
 
