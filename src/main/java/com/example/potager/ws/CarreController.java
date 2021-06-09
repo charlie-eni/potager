@@ -16,12 +16,12 @@ public class CarreController {
 	@Autowired
 	CarreManager carreManager;
 	
-	@GetMapping("/api/getCarre")
+	@GetMapping("/api/carre")
 	public List<Carre> getCarre(){
 		return carreManager.getAllCarre();	
 		}
 	
-	@GetMapping("/WS/getCarre/{id}")
+	@GetMapping("/api/carre/{id}")
 	public Carre one(@PathVariable Integer id) {
 		return carreManager.getById(id);
 	}

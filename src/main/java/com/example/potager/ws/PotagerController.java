@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Potager;
 
@@ -14,11 +14,16 @@ import com.example.potager.bo.Potager;
 public class PotagerController {
 	
 	@Autowired
-	PotagerManager potagerMger;
+	PotagerManager potagerManager;
 	
-	@GetMapping("/api/getPotager")
+	@GetMapping("/api/Potager")
 	public List<Potager> getPotager() {
-		return potagerMger.getAllPotager();
+		return potagerManager.getAllPotager();
+	}
+	
+	@GetMapping("/api/potager/{id}")
+	public Potager one(@PathVariable Integer id) {
+		return potagerManager.getById(id);
 	}
 	
 }
