@@ -15,45 +15,44 @@ import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
 import com.example.potager.bo.Carre;
 
-
 @RestController
 public class CarreController {
 
 	@Autowired
 	CarreManager carreManager;
-	
+
 	@GetMapping("/api/carre")
-	public List<Carre> getCarre(){
-		return carreManager.getAllCarre();	
-		}
-	
+	public List<Carre> getCarre() {
+		return carreManager.getAllCarre();
+	}
+
 	@GetMapping("/api/carre/{id}")
 	public Carre one(@PathVariable Integer id) {
 		return carreManager.getById(id);
 	}
-	
+
 	@PostMapping("/api/carre")
 	public Carre create(@RequestBody Carre carre) throws CarreException {
-		
+
 		carreManager.addCarre(carre);
 		return carre;
-		
+
 	}
-	
+
 	@PutMapping("/api/carre/{id}")
 	public Carre update(@RequestBody Carre carre, @PathVariable Integer id) {
-		
+
 		carreManager.updateCarre(carre, id);
 		return carre;
-		
+
 	}
-	
+
 	@DeleteMapping("/api/carre/{id}")
 	public String delete(@PathVariable Integer id) {
-		
+
 		Carre c = carreManager.getById(id);
 		carreManager.deleteCarre(c);
 		return "Le Carré répondant a l'id " + c.getIdCarre() + " a bien été supprimé";
-		
+
 	}
 }
