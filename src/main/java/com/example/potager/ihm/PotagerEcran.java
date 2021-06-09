@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Potager;
@@ -62,4 +63,5 @@ public class PotagerEcran {
 		manager.deletePotagerById(id);
 		return "redirect:/potager/index";
 	}
+
 }

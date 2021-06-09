@@ -44,7 +44,7 @@ public class CarreManagerImpl implements CarreManager {
 	}
 
 	@Override
-	public void removeCarreById(Integer id) {
+	public void deleteCarreById(Integer id) {
 		dao.deleteById(id);
 	}
 

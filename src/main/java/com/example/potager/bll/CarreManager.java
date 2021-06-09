@@ -10,7 +10,7 @@ public interface CarreManager {
 
 	public void deleteCarre(Carre carre);
 
-	public void removeCarreById(Integer id);
+	public void deleteCarreById(Integer id);
 
 	public void updateCarre(Carre carre, Integer id);
 
