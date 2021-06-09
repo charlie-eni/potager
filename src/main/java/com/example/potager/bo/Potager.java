@@ -3,6 +3,7 @@ package com.example.potager.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class Potager {
 	private Integer surface;
 	private String ville;
 
-	@OneToMany(mappedBy = "potager")
+	@OneToMany(mappedBy = "potager", cascade = CascadeType.ALL)
 	private List<Carre> carre;
 
 	public Potager(String localisation, String nom, Integer surface, String ville) {

@@ -3,6 +3,7 @@ package com.example.potager.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Carre {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idCarre;
 
-	@OneToMany(mappedBy = "carre", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "carre", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	List<PlanteIntoCarre> plans;
 
 	private Integer surface;
