@@ -16,7 +16,9 @@
 							<th scope="col">Surface</th>
 							<th scope="col">Ville</th>
 							<th scope="col">Modifier</th>
+							<th scope="col">Ajouter un carré</th>
 							<th scope="col">Supprimer</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -26,6 +28,8 @@
 							<td th:text="${potager.surface}"></td>
 							<td th:text="${potager.ville}"></td>
 							<td><a th:href="@{/potager/edit/{id} (id=${potager.idPotager})}">Modifier</a></td>
+							<td><button type="button" class="btn shadow-lg button-custom"><a class="button-a-custom"
+					th:href="@{/carre/ajout/{id} (id=${potager.idPotager})}">Ajouter un carré</a></button></td>
 							<td><a th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</a></td>
 						</tr>
 					</tbody>

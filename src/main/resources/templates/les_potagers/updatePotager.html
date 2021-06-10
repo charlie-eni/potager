@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html>
 <div th:replace="../fragments/header :: header"></div>
+
 <body>
-	<form th:action="@{/potager/update/{id}(id=${potager.idPotager})}"
-		th:object="${potager}" method="post">
-		
-		<label for="nom">Nom</label> 
-		<input type="text" th:field="*{nom}" id="nom" placeholder="Nom"> 
-		<span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
-			 
-		<label for="description">Localisation</label> 
-		<input type="text" th:field="*{localisation}" id="localisation" placeholder="Localisation"> 
-		<span th:if="${#fields.hasErrors('localisation')}" th:errors="*{localisation}"></span> 
-			
-		<label for="nom">Surface</label>
-		<input type="text" th:field="*{surface}" id="surface" placeholder="Surface"> 
-		<span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
-			
-		<label for="nom">Ville</label> 
-		<input type="text" th:field="*{ville}" id="ville" placeholder="Ville"> 
-		<span th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span> 
-			
-		<input type="submit" value="Mise � jour">
-	</form>
+
+
+	<main class="main-custom rounded shadow-lg">
+
+		<h1 class="text-center mt-2">Mise à jour potager</h1>
+
+		<form th:action="@{/potager/update/{id}(id=${potager.idPotager})}" th:object="${potager}" method="post">
+			<div class="row">
+				<div class="form-group col-md-5 mx-auto m-3">
+					<label for="nom">Nom</label>
+					<input type="text" th:field="*{nom}" class="form-control" id="nom" placeholder="Tomate">
+					<span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+				</div>
+				<div class="form-group col-md-5 mx-auto m-3">
+					<label for="localisation">localisation</label>
+					<input type="text" th:field="*{localisation}" class="form-control" id="localisation" placeholder="">
+					<span th:if="${#fields.hasErrors('localisation')}" th:errors="*{localisation}"></span>
+				</div>
+				<div class="form-group col-md-5 mx-auto m-3">
+					<label for="surface">surface</label>
+					<input type="number" th:field="*{surface}" class="form-control" id="surface" placeholder="">
+					<span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
+				</div>
+				<div class="form-group col-md-5 mx-auto m-3">
+					<label for="ville">ville</label>
+					<input type="text" th:field="*{ville}" class="form-control" id="ville" placeholder="">
+					<span th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
+				</div>
+
+				<div class="text-center">
+					<button type="submit" class="btn btn-block button-custom m-5">Modifier</button>
+					<button type="button" class="btn btn-block button-custom m-5"><a class="button-a-custom"
+							href="/potager/index">Retour</a></button>
+				</div>
+		</form>
+
+	</main>
+
+	<footer class="fixed-bottom text-center text-white">
+		<p>Super footer</p>
+	</footer>
+
 </body>
+
 </html>

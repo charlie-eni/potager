@@ -16,6 +16,7 @@
 							<th scope="col">Type de sol</th>
 							<th scope="col">Type d'exposition</th>
 							<th scope="col">Modifier</th>
+							<th scope="col">Ajouter un plan</th>
 							<th scope="col">Supprimer</th>
 						</tr>
 					</thead>
@@ -26,13 +27,13 @@
 							<td th:text="${carre.typeSol}"></td>
 							<td th:text="${carre.typeExposition}"></td>
 							<td><a th:href="@{/carre/edit/{id} (id=${carre.idCarre})}">Modifier</a></td>
+							<td><button type="button" class="btn shadow-lg button-custom"><a class="button-a-custom"
+					th:href="@{/plante/ajout/{id} (id=${carre.idCarre})}">Ajouter un plan</a></button></td>
 							<td><a th:href="@{/carre/delete/{id} (id=${carre.idCarre})}">Supprimer</a></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<button type="button" class="btn shadow-lg mt-5 button-custom"><a class="button-a-custom"
-					th:href="@{/carre/ajout}">Ajouter un carre</a></button>
 	</main>
 
 	<footer class="fixed-bottom text-center text-white">
