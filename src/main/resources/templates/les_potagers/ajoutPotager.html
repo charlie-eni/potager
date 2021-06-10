@@ -18,7 +18,6 @@
     <label for="nom">Ville</label>
     <input type="text" th:field="*{ville}" id="ville" placeholder="Ville">
     <span th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
-    
     <input type="submit" value="Ajouter le potager">   
 </form>
 </body>
