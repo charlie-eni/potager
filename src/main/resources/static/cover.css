@@ -59,6 +59,20 @@ body {
 	transition:1s;
 	color: #80ff00;
 }
+input,select{
+	border-top: 2px solid transparent !important;
+	border-bottom: 2px solid #80ff00 !important;
+	background-color: rgba(255,255,255,0.7) !important;
+}
+input:hover{
+	border: 2px solid #80ff00 !important;
+	
+}
+.form-control:focus {
+  border-color: #80ff00;
+  box-shadow: inset 1px 1px 10px #80ff00;
+  border: 2px solid #80ff00 !important;
+}
 
 
 
