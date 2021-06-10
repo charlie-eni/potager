@@ -19,7 +19,7 @@ public class PotagerEcran {
 	@Autowired
 	private PotagerManager manager;
 
-	@GetMapping("/potager/saisie")
+	@GetMapping("/potager/ajout")
 	public String saisiePotager(Potager potager) {
 		return "les_potagers/ajoutPotager";
 	}
