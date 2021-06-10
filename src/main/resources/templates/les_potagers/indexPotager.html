@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <div th:replace="../fragments/header :: header"></div>
-	<body>
-		<div th:switch="${potagers}">
-			<h2 th:case="null">Vous n'avez pas encore ajout� de potager !</h2>
+
+<body>
+	<main class="text-center main-custom rounded shadow-lg">
+		<h1>Potagers</h1>
+		<div class="p-5" th:switch="${potagers}">
+			<h2 th:case="null">Vous n'avez pas encore ajouté de potager !</h2>
 			<div th:case="*">
-				<h2>Mes potagers</h2>
-				<table>
+				<table class="table">
 					<thead>
 						<tr>
-							<th>Nom</th>
-							<th>Localisation</th>
-							<th>Surface</th>
-							<th>Ville</th>
-							<th>Modifier</th>
-							<th>Supprimer</th>
-							<th>Mes carr�s</th>
+							<th scope="col">Nom</th>
+							<th scope="col">Localisation</th>
+							<th scope="col">Surface</th>
+							<th scope="col">Ville</th>
+							<th scope="col">Modifier</th>
+							<th scope="col">Supprimer</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -24,20 +25,19 @@
 							<td th:text="${potager.localisation}"></td>
 							<td th:text="${potager.surface}"></td>
 							<td th:text="${potager.ville}"></td>
-							<td><a
-								th:href="@{/potager/edit/{id} (id=${potager.idPotager})}">Modifier</a></td>
-							<td><a
-								th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</a></td>
-							<td><a
-								th:href="@{/carre/ajout/{id} (id=${potager.idPotager})}">Ajouter
-									carr�s</a></td>
+							<td><a th:href="@{/potager/edit/{id} (id=${potager.idPotager})}">Modifier</a></td>
+							<td><a th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</a></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<p>
-				<a href="/potager/saisie">Ajouter un nouveau potager</a>
-			</p>
-		</div>
-	</body>
+			<button type="button" class="btn shadow-lg mt-5 button-custom"><a class="button-a-custom"
+					th:href="@{/potager/ajout}">Ajouter un potager</a></button>
+	</main>
+
+	<footer class="fixed-bottom text-center text-white">
+		<p>Super footer</p>
+	</footer>
+</body>
+
 </html>

@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html>
 <div th:replace="../fragments/header :: header"></div>
+
 <body>
-	<div th:switch="${carres}">
-		<h2 th:case="null">Vous n'avez pas encore ajout� de carr� !</h2>
-		<div th:case="*">
-			<h2>Mes carr�s</h2>
-			<table>
-				<thead>
-					<tr>
-						<th>Potager</th>
-						<th>Surface</th>
-						<th>Type de sol</th>
-						<th>Type d'exposition</th>
-						<th>Modifier</th>
-						<th>Supprimer</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="carre : ${carres}">
-						<td th:text="${carre.potager.getIdPotager}"></td>
-						<td th:text="${carre.surface}"></td>
-						<td th:text="${carre.typeSol}"></td>
-						<td th:text="${carre.typeExposition}"></td>
-						<td><a th:href="@{/carre/edit/{id} (id=${carre.idCarre})}">Modifier</a></td>
-						<td><a th:href="@{/carre/delete/{id} (id=${carre.idCarre})}">Supprimer</a></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<p>
-			<a href="/carre/ajout">Ajouter un nouveau carr�</a>
-		</p>
-	</div>
+	<main class="text-center main-custom rounded shadow-lg">
+		<h1>Carrés</h1>
+		<div class="p-5" th:switch="${carres}">
+			<h2 th:case="null">Vous n'avez pas encore ajouté de carré !</h2>
+			<div th:case="*">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Potager</th>
+							<th scope="col">Surface</th>
+							<th scope="col">Type de sol</th>
+							<th scope="col">Type d'exposition</th>
+							<th scope="col">Modifier</th>
+							<th scope="col">Supprimer</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="carre : ${carres}">
+							<td th:text="${carre.getIdCarre}"></td>
+							<td th:text="${carre.Surface}"></td>
+							<td th:text="${carre.typeSol}"></td>
+							<td th:text="${carre.typeExposition}"></td>
+							<td><a th:href="@{/carre/edit/{id} (id=${carre.idCarre})}">Modifier</a></td>
+							<td><a th:href="@{/carre/delete/{id} (id=${carre.idCarre})}">Supprimer</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<button type="button" class="btn shadow-lg mt-5 button-custom"><a class="button-a-custom"
+					th:href="@{/carre/ajout}">Ajouter un carre</a></button>
+	</main>
+
+	<footer class="fixed-bottom text-center text-white">
+		<p>Super footer</p>
+	</footer>
 </body>
+
 </html>

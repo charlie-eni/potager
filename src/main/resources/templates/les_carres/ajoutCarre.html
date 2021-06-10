@@ -2,23 +2,34 @@
 <html>
 <div th:replace="../fragments/header :: header"></div>
 </div>
-	<form  th:object="${carre}" method="post">  
-		<label for="surface">Surface</label> 
-		<input type="text" th:field="*{surface}" id="surface" placeholder="Surface"> 
-			<span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
-		<select th:field="*{typeSol}">
-			<option th:each="r : ${T(com.example.potager.bo.TypeSol).values()}"
-				th:value="${r}" th:text="${r}">
-			</option>
-		</select> 
-		<select th:field="*{typeExposition}">
-			<option
-				th:each="e : ${T(com.example.potager.bo.Exposition).values()}"
-				th:value="${e}" th:text="${e}">
-			</option>
-		</select> 
-		<input type="submit" value="Ajouter le carr�">
-	</form>
+
+<body>
+	<main class="main-custom rounded shadow-lg">
+
+
+		<h1 class="text-center mt-2">Mise à jour d'un carré</h1>
+
+		
+		<form th:object="${carre}" method="post">
+				<div class="row">
+				<label for="surface">Surface</label>
+				<input type="text" th:field="*{surface}" id="surface" placeholder="Surface">
+				<span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
+				<select th:field="*{typeSol}">
+					<option th:each="r : ${T(com.example.potager.bo.TypeSol).values()}" th:value="${r}" th:text="${r}">
+					</option>
+				</select>
+				<select th:field="*{typeExposition}">
+					<option th:each="e : ${T(com.example.potager.bo.Exposition).values()}" th:value="${e}" th:text="${e}">
+					</option>
+				</select>
+			</div>
+				<input type="submit" value="Ajouter le carr�">
+			</form>
+
 	</main>
+
+
 </body>
+
 </html>
