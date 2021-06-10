@@ -62,5 +62,7 @@ public class PotagerEcran {
 		manager.deletePotagerById(id);
 		return "redirect:/potager/index";
 	}
+	
+	
 
 }

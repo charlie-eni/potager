@@ -12,24 +12,37 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
+import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Carre;
+import com.example.potager.bo.Potager;
 
 @Controller
 public class CarreEcran {
 
 	@Autowired
 	private CarreManager manager;
+	
+	@Autowired
+	private PotagerManager potagerManager;
+	
+	
 
-	@GetMapping("/carre/saisie")
+	@GetMapping("/carre/ajout/{idPotager}")
 	public String saisieCarre(Carre carre) {
 		return "les_carres/ajoutCarre";
 	}
 
-	@PostMapping("/carre/ajout")
-	public String ajoutCarre(@Valid Carre carre, BindingResult result, Model model) throws CarreException {
+	@PostMapping("/carre/ajout/{idPotager}")
+	public String ajoutCarre(@PathVariable("idPotager") Integer idPotager, @Valid Carre carre,
+			BindingResult result, Model model) throws CarreException {
 		if (result.hasErrors()) {
 			return "les_carres/ajoutCarre";
 		}
+		
+		Potager currentPotager = potagerManager.getById(idPotager);
+		
+		currentPotager.addCarre(carre);
+		
 		manager.addCarre(carre);
 		return "redirect:/carre/index";
 	}

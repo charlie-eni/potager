@@ -5,16 +5,16 @@
 <title>Ajouter un carré</title>
 </head>
 <body>
-	<form th:action="@{/carre/ajout}" th:object="${carre}" method="post">
+	<form  th:object="${carre}" method="post">  
 		<label for="nom">Surface</label> 
 		<input type="text" th:field="*{surface}" id="surface" placeholder="Surface"> 
 			<span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
-		<select>
+		<select th:field="*{typeSol}">
 			<option th:each="r : ${T(com.example.potager.bo.TypeSol).values()}"
 				th:value="${r}" th:text="${r}">
 			</option>
 		</select> 
-		<select>
+		<select th:field="*{typeExposition}">
 			<option
 				th:each="e : ${T(com.example.potager.bo.Exposition).values()}"
 				th:value="${e}" th:text="${e}">

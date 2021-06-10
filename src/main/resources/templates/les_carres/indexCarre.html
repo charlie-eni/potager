@@ -22,6 +22,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="carre : ${carres}">
+					
 						<td th:text="${carre.surface}"></td>
 						<td th:text="${carre.typeSol}"></td>
 						<td th:text="${carre.typeExposition}"></td>
@@ -32,7 +33,7 @@
 			</table>
 		</div>
 		<p>
-			<a href="/carre/saisie">Ajouter un nouveau carré</a>
+			<a href="/carre/ajout">Ajouter un nouveau carré</a>
 		</p>
 	</div>
 </body>

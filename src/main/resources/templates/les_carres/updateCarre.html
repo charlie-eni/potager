@@ -6,21 +6,27 @@
 </head>
 <body>
 <form 
-  th:action="@{/potager/update/{id}(id=${potager.idPotager})}" 
-  th:object="${potager}" 
+  th:action="@{/carre/update/{id}(id=${carre.idCarre})}" 
+  th:object="${carre}" 
   method="post">
-    <label for="nom">Nom</label>
-    <input type="text" th:field="*{nom}" id="nom" placeholder="Nom">
-    <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
-    <label for="description">Localisation</label>
-    <input type="text" th:field="*{localisation}" id="localisation" placeholder="Localisation">
-    <span th:if="${#fields.hasErrors('localisation')}" th:errors="*{localisation}"></span>
-    <label for="nom">Surface</label>
-    <input type="text" th:field="*{surface}" id="surface" placeholder="Surface">
-    <span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
-    <label for="nom">Ville</label>
-    <input type="text" th:field="*{ville}" id="ville" placeholder="Ville">
-    <span th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
+  	<label for="nom">Potager</label> 
+		<input type="text"> 
+    <label for="surface">Surface</label> 
+		<input type="text" th:field="*{surface}" id="surface" placeholder="Surface"> 
+			<span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
+	<label for="typeSol">Type de sol</label>
+		<select>
+			<option th:each="r : ${T(com.example.potager.bo.TypeSol).values()}"
+				th:value="${r}" th:text="${r}">
+			</option>
+		</select> 
+	<label for="exposition">Type d'exposition</label>
+		<select>
+			<option
+				th:each="e : ${T(com.example.potager.bo.Exposition).values()}"
+				th:value="${e}" th:text="${e}">
+			</option>
+		</select> 
     
     <input type="submit" value="Mise à jour">
 </form>
