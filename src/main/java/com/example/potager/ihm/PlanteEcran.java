@@ -14,8 +14,8 @@ public class PlanteEcran {
 	PlanteManager planteManager;
 	
 	@GetMapping("/plante/index")
-	public String listePotagers(Model model) {
-		model.addAttribute("potagers", planteManager.getAllPlante());
+	public String listePlantes(Model model) {
+		model.addAttribute("plantes", planteManager.getAllPlante());
 		return "indexPlante";
 	}
 }
