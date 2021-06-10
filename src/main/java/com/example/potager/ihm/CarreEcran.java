@@ -55,7 +55,7 @@ public class CarreEcran {
 		}
 		manager.updateCarre(carre, id);
 		return "redirect:/carre/index";
-	} 
+	}
 
 	@GetMapping("/carre/delete/{id}")
 	public String deleteCarre(@PathVariable("id") Integer id, Model model) {

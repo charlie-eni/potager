@@ -2,24 +2,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ajouter un potager</title>
+<title>Ajouter un carré</title>
 </head>
 <body>
-<form th:action="@{/carre/ajout}" th:object="${carre}" method="post">
-    <label for="nom">Nom</label>
-    <input type="text" th:field="*{nom}" id="nom" placeholder="Nom">
-    <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
-    <label for="description">Localisation</label>
-    <input type="text" th:field="*{localisation}" id="localisation" placeholder="Localisation">
-    <span th:if="${#fields.hasErrors('localisation')}" th:errors="*{localisation}"></span>
-    <label for="nom">Surface</label>
-    <input type="text" th:field="*{surface}" id="surface" placeholder="Surface">
-    <span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
-    <label for="nom">Ville</label>
-    <input type="text" th:field="*{ville}" id="ville" placeholder="Ville">
-    <span th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
-    
-    <input type="submit" value="Ajouter le potager">   
-</form>
+	<form th:action="@{/carre/ajout}" th:object="${carre}" method="post">
+		<label for="nom">Surface</label> 
+		<input type="text" th:field="*{surface}" id="surface" placeholder="Surface"> 
+			<span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
+		<select>
+			<option th:each="r : ${T(com.example.potager.bo.TypeSol).values()}"
+				th:value="${r}" th:text="${r}">
+			</option>
+		</select> 
+		<select>
+			<option
+				th:each="e : ${T(com.example.potager.bo.Exposition).values()}"
+				th:value="${e}" th:text="${e}">
+			</option>
+		</select> 
+		<input type="submit" value="Ajouter le carré">
+	</form>
 </body>
 </html>

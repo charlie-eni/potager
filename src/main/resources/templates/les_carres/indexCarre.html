@@ -12,6 +12,7 @@
 			<table>
 				<thead>
 					<tr>
+						<th>Potager</th>
 						<th>Surface</th>
 						<th>Type de sol</th>
 						<th>Type d'exposition</th>
@@ -22,16 +23,6 @@
 				<tbody>
 					<tr th:each="carre : ${carres}">
 						<td th:text="${carre.surface}"></td>
-						 <!-- <select>
-							<option
-								th:each="r : ${T(com.example.potager.bo.TypeSol).values()}"
-								th:value="${r}" th:text="${r}"></option>
-						</select>
-						<select>
-							<option
-								th:each="e : ${T(com.example.potager.bo.Exposition).values()}"
-								th:value="${e}" th:text="${e}"></option>
-						</select>-->
 						<td th:text="${carre.typeSol}"></td>
 						<td th:text="${carre.typeExposition}"></td>
 						<td><a th:href="@{/carre/edit/{id} (id=${carre.idCarre})}">Modifier</a></td>
