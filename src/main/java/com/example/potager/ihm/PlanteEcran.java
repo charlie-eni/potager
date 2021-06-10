@@ -26,7 +26,7 @@ public class PlanteEcran {
 		return "les_plantes/indexPlante";
 	}
 
-	@GetMapping("/plante/saisie")
+	@GetMapping("/plante/ajout")
 	public String saisiePlante(Plante plante) {
 		return "les_plantes/ajoutPlante";
 	}
