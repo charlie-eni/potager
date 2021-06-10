@@ -59,9 +59,9 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 					lstSurface.add((p.getSurface() * p.getNbPlante()));
 				}
 
-				if (pic.getPlante().getNom().equals(plante.getNom())) {
+				//if (pic.getPlante().getNom().equals(plante.getNom())) {
 					lstNomPlante.add(pic.getPlante());
-				}
+				//}
 
 			}
 		}
@@ -76,7 +76,7 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 		}
 
 		if (3 < (lstNomPlante.size() + 1)) {
-			throw new PlanteIntoCarreException("Vous avez atteint le maximum de " + plante.getNom() + " pour ce carré");
+			throw new PlanteIntoCarreException("Vous avez atteint le maximum de plantes pour ce carré");
 		}
 
 		plan.addCarre(carre);
