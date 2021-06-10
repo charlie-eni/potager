@@ -3,7 +3,7 @@
 <div th:replace="../fragments/header :: header"></div>
 	<body>
 		<div th:switch="${potagers}">
-			<h2 th:case="null">Vous n'avez pas encore ajouté de potager !</h2>
+			<h2 th:case="null">Vous n'avez pas encore ajoutï¿½ de potager !</h2>
 			<div th:case="*">
 				<h2>Mes potagers</h2>
 				<table>
@@ -15,7 +15,7 @@
 							<th>Ville</th>
 							<th>Modifier</th>
 							<th>Supprimer</th>
-							<th>Mes carrés</th>
+							<th>Mes carrï¿½s</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -30,14 +30,13 @@
 								th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</a></td>
 							<td><a
 								th:href="@{/carre/ajout/{id} (id=${potager.idPotager})}">Ajouter
-									carrés</a></td>
+									carrï¿½s</a></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<p>
-				<a href="/potager/saisie">Ajouter un nouveau potager</a> <a
-					href="/carre/index">Voir mes carrés</a>
+				<a href="/potager/saisie">Ajouter un nouveau potager</a>
 			</p>
 		</div>
 	</body>

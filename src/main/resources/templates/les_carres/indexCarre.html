@@ -3,9 +3,9 @@
 <div th:replace="../fragments/header :: header"></div>
 <body>
 	<div th:switch="${carres}">
-		<h2 th:case="null">Vous n'avez pas encore ajouté de carré !</h2>
+		<h2 th:case="null">Vous n'avez pas encore ajoutï¿½ de carrï¿½ !</h2>
 		<div th:case="*">
-			<h2>Mes carrés</h2>
+			<h2>Mes carrï¿½s</h2>
 			<table>
 				<thead>
 					<tr>
@@ -19,7 +19,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="carre : ${carres}">
-					
+						<td th:text="${carre.potager.getIdPotager}"></td>
 						<td th:text="${carre.surface}"></td>
 						<td th:text="${carre.typeSol}"></td>
 						<td th:text="${carre.typeExposition}"></td>
@@ -30,7 +30,7 @@
 			</table>
 		</div>
 		<p>
-			<a href="/carre/ajout">Ajouter un nouveau carré</a>
+			<a href="/carre/ajout">Ajouter un nouveau carrï¿½</a>
 		</p>
 	</div>
 </body>

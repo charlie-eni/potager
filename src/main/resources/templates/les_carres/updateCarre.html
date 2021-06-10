@@ -6,10 +6,8 @@
   th:action="@{/carre/update/{id}(id=${carre.idCarre})}" 
   th:object="${carre}" 
   method="post">
-  	<label for="nom">Potager</label> 
-		<input type="text"> 
     <label for="surface">Surface</label> 
-		<input type="text" th:field="*{surface}" id="surface" placeholder="Surface"> 
+		<input type="number" th:field="*{surface}" id="surface" placeholder="Surface"> 
 			<span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
 	<label for="typeSol">Type de sol</label>
 		<select>
@@ -25,7 +23,7 @@
 			</option>
 		</select> 
     
-    <input type="submit" value="Mise à jour">
+    <input type="submit" value="Mise ï¿½ jour">
 </form>
 </body>
 </html>
