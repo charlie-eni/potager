@@ -37,7 +37,7 @@ public class PotagerEcran {
 	public String listePotagers(Model model) {
 		model.addAttribute("potagers", manager.getAllPotager());
 		return "les_potagers/indexPotager";
-	} 
+	}
 
 	@GetMapping("potager/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
@@ -62,7 +62,5 @@ public class PotagerEcran {
 		manager.deletePotagerById(id);
 		return "redirect:/potager/index";
 	}
-	
-	
 
 }

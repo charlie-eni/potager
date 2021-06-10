@@ -9,24 +9,23 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import com.example.potager.bll.PlanteException;
 import com.example.potager.bll.PlanteManager;
 import com.example.potager.bo.Plante;
-import com.example.potager.bo.Potager;
-
 
 @Controller
 public class PlanteEcran {
 
 	@Autowired
 	PlanteManager planteManager;
-	
+
 	@GetMapping("/plante/index")
 	public String listePlantes(Model model) {
 		model.addAttribute("plantes", planteManager.getAllPlante());
 		return "les_plantes/indexPlante";
 	}
-	
+
 	@GetMapping("/plante/saisie")
 	public String saisiePlante(Plante plante) {
 		return "les_plantes/ajoutPlante";
@@ -40,7 +39,7 @@ public class PlanteEcran {
 		planteManager.addPlante(plante);
 		return "redirect:/plante/index";
 	}
-	
+
 	@GetMapping("plante/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
 		Plante plante = planteManager.getById(id);
