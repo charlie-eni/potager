@@ -89,4 +89,5 @@ public class PlanteEcran {
 		planteManager.deletePlante(id);
 		return "redirect:/plante/index";
 	}
+
 }
