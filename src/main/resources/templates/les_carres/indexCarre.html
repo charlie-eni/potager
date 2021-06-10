@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Mon Potager</title>
-</head>
+<div th:replace="../fragments/header :: header"></div>
 <body>
 	<div th:switch="${carres}">
-		<h2 th:case="null">Vous n'avez pas encore ajoutÃ© de carrÃ© !</h2>
+		<h2 th:case="null">Vous n'avez pas encore ajouté de carré !</h2>
 		<div th:case="*">
-			<h2>Mes carrÃ©s</h2>
+			<h2>Mes carrés</h2>
 			<table>
 				<thead>
 					<tr>
@@ -33,7 +30,7 @@
 			</table>
 		</div>
 		<p>
-			<a href="/carre/ajout">Ajouter un nouveau carrÃ©</a>
+			<a href="/carre/ajout">Ajouter un nouveau carré</a>
 		</p>
 	</div>
 </body>

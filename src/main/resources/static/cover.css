@@ -1,86 +1,79 @@
 /*
  * Base structure
  */
-
 body {
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-
-  background-image: url("/Img/potager.jpg");
+	text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+	background-image: url("/Img/potager.jpg");
 }
 
 /*
  * Header
  */
-.nav-custom{
-	background-color: rgba(255,255,255,0.7);
-
+.nav-custom {
+	background-color: rgba(255, 255, 255, 0.7);
 }
 
-.main-custom{
+.main-custom {
 	margin: 5rem;
-	background-color: rgba(255,255,255,0.7);
+	background-color: rgba(255, 255, 255, 0.7);
 	border: 1px solid grey;
 	box-shadow: 1px 5px 15px black !important;
 }
 
-.title-custom{
+.title-custom {
 	color: #80ff00 !important;
-	font-size:2rem;
-	margin:0;
-	margin-right:13rem;
-	margin-left:1rem;
-	text-shadow:1px 1px 2px black;
+	font-size: 2rem;
+	margin: 0;
+	margin-right: 13rem;
+	margin-left: 1rem;
+	text-shadow: 1px 1px 2px black;
 }
 
-.nav-link{
-	margin-left:5rem;
+.nav-link {
+	margin-left: 5rem;
 	border: 2px solid transparent;
 	color: white !important;
-	text-shadow:1px 1px 2px black;
+	text-shadow: 1px 1px 2px black;
 }
+
 .nav-link:hover{
 	transition: 0.5s;
 	border-bottom: 2px solid #80ff00;
 }
-.button-custom{
-	background-color: rgba(255,255,255,0.7);
+
+.button-custom {
+	background-color: rgba(255, 255, 255, 0.7);
 	border: 1px solid grey;
 }
+
 .button-custom:hover{
 	transition:0.5s;
 	border: 1px solid #80ff00;
 	color: #80ff00;
 }
-.button-a-custom{
-	text-decoration:none;
+
+.button-a-custom {
+	text-decoration: none;
 	color: black;
 }
+
 .button-a-custom:hover{
 	transition:0.5s;
 	color: #80ff00;
 }
-input,select{
+
+input, select {
 	border-top: 2px solid transparent !important;
 	border-bottom: 2px solid #80ff00 !important;
-	background-color: rgba(255,255,255,0.7) !important;
+	background-color: rgba(255, 255, 255, 0.7) !important;
 }
-input:hover{
+
+input:hover {
 	border: 2px solid #80ff00 !important;
-	
 }
+
 .form-control:focus {
-  border-color: #80ff00;
-  box-shadow: inset 1px 1px 10px #80ff00;
-  border: 2px solid #80ff00 !important;
+	border-color: #80ff00;
+	box-shadow: inset 1px 1px 10px #80ff00;
+	border: 2px solid #80ff00 !important;
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Mise à jour potager</title>
-</head>
+<div th:replace="../fragments/header :: header"></div>
 <body>
 <form 
   th:action="@{/carre/update/{id}(id=${carre.idCarre})}" 
@@ -28,7 +25,7 @@
 			</option>
 		</select> 
     
-    <input type="submit" value="Mise à jour">
+    <input type="submit" value="Mise � jour">
 </form>
 </body>
 </html>

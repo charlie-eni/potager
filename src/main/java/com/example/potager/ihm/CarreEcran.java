@@ -21,11 +21,9 @@ public class CarreEcran {
 
 	@Autowired
 	private CarreManager manager;
-	
+
 	@Autowired
 	private PotagerManager potagerManager;
-	
-	
 
 	@GetMapping("/carre/ajout/{idPotager}")
 	public String saisieCarre(Carre carre) {
@@ -33,16 +31,16 @@ public class CarreEcran {
 	}
 
 	@PostMapping("/carre/ajout/{idPotager}")
-	public String ajoutCarre(@PathVariable("idPotager") Integer idPotager, @Valid Carre carre,
-			BindingResult result, Model model) throws CarreException {
+	public String ajoutCarre(@PathVariable("idPotager") Integer idPotager, @Valid Carre carre, BindingResult result,
+			Model model) throws CarreException {
 		if (result.hasErrors()) {
 			return "les_carres/ajoutCarre";
 		}
-		
+
 		Potager currentPotager = potagerManager.getById(idPotager);
-		
+
 		currentPotager.addCarre(carre);
-		
+
 		manager.addCarre(carre);
 		return "redirect:/carre/index";
 	}
