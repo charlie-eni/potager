@@ -62,12 +62,13 @@
 			      <td th:text="${plante.surface}"></td>
 			      <td th:text="${plante.nbPlante}"></td>
 			      <td th:text="${plante.miseEnPlace}"></td>
-			      <td><a href="#">Modifier</a></td>
-			      <td><a href="#">Supprimer</a></td>
+			      <td><a th:href="@{/plante/edit/{id} (id=${plante.idPlante})}">Modifier</a></td>
+			      <td><a th:href="@{/plante/delete/{id} (id=${plante.idPlante})}">Supprimer</a></td>
 			    </tr>
 			  </tbody>
 			</table>
 		</div>
+		<button type="button" class="btn shadow-lg mt-5 button-custom"><a class="button-a-custom" href="/plante/saisie">Ajouter une plante</a></button>
 	  </main>
 
 	  <footer class="fixed-bottom text-center text-white">
