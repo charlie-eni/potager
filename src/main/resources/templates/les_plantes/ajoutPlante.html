@@ -36,9 +36,9 @@
 	    </div>
 	  </nav>
 	
-	  <main class="text-center main-custom rounded shadow-lg">
+	  <main class="main-custom rounded shadow-lg">
 	  
-	    <h1>Ajouter une plante</h1>
+	    <h1 class="text-center mt-2">Ajouter une plante</h1>
 	    
 	    <form th:action="@{/plante/ajout}" th:object="${plante}" method="post">
 	    	<div class="row">
@@ -81,9 +81,9 @@
 			    <span th:if="${#fields.hasErrors('miseEnPlace')}" th:errors="*{miseEnPlace}"></span>
 			  </div>
 		  	</div>
-	
+			<div class="text-center">
 			  <button type="submit" class="btn btn-block button-custom m-5">Ajouter</button>
-			  
+		  	</div>
 		</form>
 
 	  </main>

@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -35,6 +37,7 @@ public class Plante {
 	private String variete;
 	private Integer surface;
 	private Integer nbPlante;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate miseEnPlace;
 
 	public Plante(String nom, Type type, String variete, Integer surface, Integer nbPlante, LocalDate miseEnPlace) {
