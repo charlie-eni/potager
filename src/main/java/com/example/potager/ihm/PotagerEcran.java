@@ -31,7 +31,7 @@ public class PotagerEcran {
 		}
 		manager.addPotager(potager);
 		return "redirect:/potager/index";
-	}
+	} 
 
 	@GetMapping("/potager/index")
 	public String listePotagers(Model model) {

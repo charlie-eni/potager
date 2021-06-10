@@ -10,9 +10,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.potager.bll.CarreException;
+import com.example.potager.bll.CarreManager;
+import com.example.potager.bll.GestionPotagerManager;
 import com.example.potager.bll.PlanteException;
+import com.example.potager.bll.PlanteIntoCarreException;
 import com.example.potager.bll.PlanteManager;
+import com.example.potager.bll.PotagerManager;
+import com.example.potager.bo.Carre;
 import com.example.potager.bo.Plante;
+import com.example.potager.bo.PlanteIntoCarre;
+import com.example.potager.bo.Potager;
 
 @Controller
 public class PlanteEcran {
@@ -20,22 +28,40 @@ public class PlanteEcran {
 	@Autowired
 	PlanteManager planteManager;
 
+	@Autowired
+	private CarreManager carreManager;
+
+	@Autowired
+	private GestionPotagerManager gestionManager;
+
+	@Autowired
+	private PotagerManager potagerManager;
+
 	@GetMapping("/plante/index")
 	public String listePlantes(Model model) {
 		model.addAttribute("plantes", planteManager.getAllPlante());
 		return "les_plantes/indexPlante";
 	}
 
-	@GetMapping("/plante/ajout")
+	@GetMapping("/plante/ajout/{idCarre}")
 	public String saisiePlante(Plante plante) {
 		return "les_plantes/ajoutPlante";
 	}
 
-	@PostMapping("/plante/ajout")
-	public String ajoutPlante(@Valid Plante plante, BindingResult result, Model model) throws PlanteException {
+	@PostMapping("/plante/ajout/{idCarre}")
+	public String ajoutPlante(@PathVariable("idCarre") Integer idCarre, @Valid Plante plante, PlanteIntoCarre plan,
+			BindingResult result, Model model) throws PlanteException, PlanteIntoCarreException, CarreException {
 		if (result.hasErrors()) {
 			return "les_plantes/ajoutPlante";
 		}
+		Carre currentCarre = carreManager.getById(idCarre);
+
+		Integer currentPotager = currentCarre.getPotager().getIdPotager();
+
+		Potager potager = potagerManager.getById(currentPotager);
+
+		gestionManager.addPlanteToPotager(potager, plante, currentCarre, plan);
+
 		planteManager.addPlante(plante);
 		return "redirect:/plante/index";
 	}
