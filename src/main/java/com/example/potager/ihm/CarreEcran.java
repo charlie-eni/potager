@@ -37,8 +37,10 @@ public class CarreEcran {
 			return "les_carres/ajoutCarre";
 		}
 
+		System.out.println(idPotager);
 		Potager currentPotager = potagerManager.getById(idPotager);
-
+		
+		
 		currentPotager.addCarre(carre);
 
 		manager.addCarre(carre);
