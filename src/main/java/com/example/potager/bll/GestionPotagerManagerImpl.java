@@ -43,7 +43,7 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 
 	@Override
 	@Transactional
-	public void addPlanteToPotager(Potager potager, Plante plante, Carre carre, PlanteIntoCarre plan)
+	public void addPlanteToPotager(Plante plante, Carre carre, PlanteIntoCarre plan)
 			throws PlanteIntoCarreException, CarreException {
 
 		List<Plante> lstPlante = planteManager.getAllPlante();
@@ -59,9 +59,9 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 					lstSurface.add((p.getSurface() * p.getNbPlante()));
 				}
 
-				//if (pic.getPlante().getNom().equals(plante.getNom())) {
+				if (pic.getCarre().getIdCarre().equals(carre.getIdCarre())) {
 					lstNomPlante.add(pic.getPlante());
-				//}
+				}
 
 			}
 		}
@@ -79,13 +79,11 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 			throw new PlanteIntoCarreException("Vous avez atteint le maximum de plantes pour ce carré");
 		}
 
-		plan.addCarre(carre);
-		plan.addPlante(plante);
-		potager.addCarre(carre);
+		plante.miseEnPlan(plan);
+		carre.miseEnPlan(plan);
 		planDAO.save(plan);
 		planteDAO.save(plante);
 		carDAO.save(carre);
-		potaDAO.save(potager);
 	}
 
 	@Override

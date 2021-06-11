@@ -30,7 +30,7 @@ public class Plante {
 	private Integer idPlante;
 
 	@OneToMany(mappedBy = "plante", fetch = FetchType.EAGER)
-	List<PlanteIntoCarre> plans;
+	List<PlanteIntoCarre> plans = new ArrayList<PlanteIntoCarre>();
 
 	private String nom;
 	private Type type;
@@ -42,13 +42,17 @@ public class Plante {
 
 	public Plante(String nom, Type type, String variete, Integer surface, Integer nbPlante, LocalDate miseEnPlace) {
 		super();
-		this.plans = new ArrayList<PlanteIntoCarre>();
 		this.nom = nom;
 		this.type = type;
 		this.variete = variete;
 		this.surface = surface;
 		this.nbPlante = nbPlante;
 		this.miseEnPlace = miseEnPlace;
+	}
+
+	public void miseEnPlan(PlanteIntoCarre plan) {
+		this.plans.add(plan);
+		plan.setPlante(this);
 	}
 
 }

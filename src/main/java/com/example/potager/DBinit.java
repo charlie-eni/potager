@@ -62,12 +62,12 @@ public class DBinit {
 		Plante plante2 = new Plante("carotte", Type.fruit, "cerise", 100, 10, LocalDate.now());
 
 		PlanteIntoCarre plan = new PlanteIntoCarre(12, LocalDate.now(), LocalDate.now());
-		plan.addCarre(carre);
-		plan.addPlante(plante);
+//		plan.addCarre(carre);
+//		plan.addPlante(plante);
 
 		PlanteIntoCarre plan2 = new PlanteIntoCarre(12, LocalDate.now(), LocalDate.now());
-		plan2.addCarre(carre2);
-		plan2.addPlante(plante2);
+//		plan2.addCarre(carre2);
+//		plan2.addPlante(plante2);
 
 		planteMger.addPlante(plante);
 		carreMger.addCarre(carre);

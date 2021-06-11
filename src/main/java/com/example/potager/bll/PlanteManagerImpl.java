@@ -27,11 +27,6 @@ public class PlanteManagerImpl implements PlanteManager {
 	}
 
 	@Override
-	public void addPlanteToCarre(Plante plante, Carre carre) throws PlanteException {
-		addPlante(plante);
-	}
-
-	@Override
 	public void updatePlante(Plante plante, Integer id) {
 		plante.setIdPlante(id);
 		dao.save(plante);

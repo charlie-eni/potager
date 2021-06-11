@@ -1,5 +1,8 @@
 package com.example.potager.ihm;
 
+import java.time.LocalDate;
+
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,26 +46,25 @@ public class PlanteEcran {
 		return "les_plantes/indexPlante";
 	}
 
-	@GetMapping("/plante/ajout")
+	@GetMapping("/plante/ajout/{idCarre}")
 	public String saisiePlante(Plante plante) {
 		return "les_plantes/ajoutPlante";
 	}
 
 	@PostMapping("/plante/ajout/{idCarre}")
+	@Transactional
 	public String ajoutPlante(@PathVariable("idCarre") Integer idCarre, @Valid Plante plante, PlanteIntoCarre plan,
 			BindingResult result, Model model) throws PlanteException, PlanteIntoCarreException, CarreException {
 		if (result.hasErrors()) {
 			return "les_plantes/ajoutPlante";
 		}
-		Carre currentCarre = carreManager.getById(idCarre);
 
-		Integer currentPotager = currentCarre.getPotager().getIdPotager();
+		Carre carre = carreManager.getById(idCarre);
 
-		Potager potager = potagerManager.getById(currentPotager);
+		plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
+		System.out.println(plante);
+		gestionManager.addPlanteToPotager(plante, carre, plan);
 
-		gestionManager.addPlanteToPotager(potager, plante, currentCarre, plan);
-
-		planteManager.addPlante(plante);
 		return "redirect:/plante/index";
 	}
 

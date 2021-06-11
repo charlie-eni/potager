@@ -29,7 +29,7 @@ public class Carre {
 	private Integer idCarre;
 
 	@OneToMany(mappedBy = "carre", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	List<PlanteIntoCarre> plans;
+	List<PlanteIntoCarre> plans = new ArrayList<PlanteIntoCarre>();
 
 	private Integer surface;
 	private TypeSol typeSol;
@@ -40,10 +40,13 @@ public class Carre {
 
 	public Carre(Integer surface, TypeSol typeSol, Exposition typeExposition, Potager potager) {
 		super();
-		this.plans = new ArrayList<PlanteIntoCarre>();
 		this.surface = surface;
 		this.typeSol = typeSol;
 		this.typeExposition = typeExposition;
 		this.potager = potager;
+	}
+	public void miseEnPlan(PlanteIntoCarre plan) {
+		this.plans.add(plan);
+		plan.setCarre(this);
 	}
 }

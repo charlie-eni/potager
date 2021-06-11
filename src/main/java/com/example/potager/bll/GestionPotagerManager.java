@@ -10,7 +10,7 @@ import com.example.potager.bo.Potager;
 
 public interface GestionPotagerManager {
 
-	public void addPlanteToPotager(Potager potager, Plante plante, Carre carre, PlanteIntoCarre plan)
+	public void addPlanteToPotager(Plante plante, Carre carre, PlanteIntoCarre plan)
 			throws PlanteIntoCarreException, CarreException;
 
 	public List<Potager> showPotager();

@@ -41,14 +41,4 @@ public class PlanteIntoCarre {
 		this.dateRecolte = dateRecolte;
 	}
 
-	public void addPlante(Plante plante) {
-		plante.plans.add(this);
-		this.plante = plante;
-	}
-
-	public void addCarre(Carre carre) {
-		carre.plans.add(this);
-		this.carre = carre;
-	}
-
 }
