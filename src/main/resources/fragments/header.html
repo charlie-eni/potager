@@ -34,6 +34,15 @@
 			</div>
 		</nav>
 		
+		<div th:switch="${error}">
+			<div th:case="null" class="alert no-error-custom" role="alert" th:text="a"></div>
+			<div th:case="*"    class="alert error-custom"    role="alert" th:text="${error}"></div>
+		</div>
+		
 </div>
+
+
+
+
 
 
