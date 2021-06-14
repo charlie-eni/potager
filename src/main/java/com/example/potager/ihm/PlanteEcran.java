@@ -23,7 +23,6 @@ import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Carre;
 import com.example.potager.bo.Plante;
 import com.example.potager.bo.PlanteIntoCarre;
-import com.example.potager.bo.Potager;
 
 @Controller
 public class PlanteEcran {
@@ -36,9 +35,6 @@ public class PlanteEcran {
 
 	@Autowired
 	private GestionPotagerManager gestionManager;
-
-	@Autowired
-	private PotagerManager potagerManager;
 
 	@GetMapping("/plante/index")
 	public String listePlantes(Model model) {
