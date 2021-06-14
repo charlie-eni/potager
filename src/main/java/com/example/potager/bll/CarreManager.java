@@ -12,7 +12,7 @@ public interface CarreManager {
 
 	public void deleteCarreById(Integer id);
 
-	public void updateCarre(Carre carre, Integer id);
+	public void updateCarre(Carre carre, Integer id)throws CarreException;
 
 	public Carre getById(Integer id);
 
