@@ -35,7 +35,7 @@ public class PlanteEcran {
 
 	@Autowired
 	private GestionPotagerManager gestionManager;
-	
+
 	@Autowired
 	PlanteIntoCarreDAO dao;
 
@@ -71,7 +71,6 @@ public class PlanteEcran {
 			model.addAttribute("error", carreE.getMessage());
 			return "les_plantes/ajoutPlante";
 		}
-
 	}
 
 	@GetMapping("plante/edit/{id}")
@@ -95,7 +94,6 @@ public class PlanteEcran {
 	@GetMapping("/plante/delete/{id}")
 	@Transactional
 	public String deletePlante(@PathVariable("id") Integer id, Model model) {
-		 
 		Plante plante = planteManager.getById(id);
 		gestionManager.deletePlanByPlante(plante);
 		planteManager.deletePlante(id);

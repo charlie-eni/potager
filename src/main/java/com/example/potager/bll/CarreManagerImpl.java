@@ -1,12 +1,17 @@
 package com.example.potager.bll;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.potager.bo.Carre;
+import com.example.potager.bo.PlanteIntoCarre;
 import com.example.potager.dal.CarreDAO;
 
 @Service
@@ -14,6 +19,9 @@ public class CarreManagerImpl implements CarreManager {
 
 	@Autowired
 	CarreDAO dao;
+
+	@Autowired
+	GestionPotagerManager manager;
 
 	@Override
 	public void addCarre(Carre carre) throws CarreException {
@@ -39,19 +47,32 @@ public class CarreManagerImpl implements CarreManager {
 	}
 
 	@Override
+	@Transactional
 	public void deleteCarre(Carre carre) {
+		for (PlanteIntoCarre plan : carre.getPlans()) {
+
+			manager.deletePlan(plan.getId());
+		}
+
 		dao.delete(carre);
 	}
 
 	@Override
+	@Transactional
 	public void deleteCarreById(Integer id) {
+		Carre carre = dao.findById(id).orElse(null);
+
+		for (PlanteIntoCarre plan : carre.getPlans()) {
+
+			manager.deletePlan(plan.getId());
+		}
 		dao.deleteById(id);
 	}
 
 	@Override
 	public void updateCarre(Carre carre, Integer id) throws CarreException {
 		carre.setIdCarre(id);
-		
+
 		List<Integer> lstSurface = new ArrayList<Integer>();
 		List<Carre> lstCarre = getAllCarre();
 		for (Carre carre2 : lstCarre) {

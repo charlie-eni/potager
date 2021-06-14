@@ -2,9 +2,12 @@ package com.example.potager.bll;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.potager.bo.Carre;
 import com.example.potager.bo.Potager;
 import com.example.potager.dal.PotagerDAO;
 
@@ -13,6 +16,9 @@ public class PotagerManagerImpl implements PotagerManager {
 
 	@Autowired
 	PotagerDAO dao;
+
+	@Autowired
+	CarreManager carreManager;
 
 	@Override
 	public void addPotager(Potager potager) {
@@ -41,7 +47,15 @@ public class PotagerManagerImpl implements PotagerManager {
 	}
 
 	@Override
+	@Transactional
 	public void deletePotagerById(Integer id) {
+
+		Potager potager = getById(id);
+
+		for (Carre carre : potager.getCarre()) {
+			carreManager.deleteCarre(carre);
+		}
+
 		dao.deleteById(id);
 	}
 }

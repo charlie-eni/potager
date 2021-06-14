@@ -3,7 +3,6 @@ package com.example.potager.bo;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -45,6 +44,7 @@ public class Carre {
 		this.typeExposition = typeExposition;
 		this.potager = potager;
 	}
+
 	public void miseEnPlan(PlanteIntoCarre plan) {
 		this.plans.add(plan);
 		plan.setCarre(this);

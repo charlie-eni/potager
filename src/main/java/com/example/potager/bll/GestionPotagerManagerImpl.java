@@ -41,6 +41,9 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 	@Autowired
 	ActionDAO actionDAO;
 
+	@Autowired
+	GestionPotagerManager gestionManager;
+	
 	@Override
 	@Transactional
 	public void addPlanteToPotager(Plante plante, Carre carre, PlanteIntoCarre plan)
@@ -111,7 +114,12 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 	}
 
 	@Override
+	@Transactional
 	public void deletePlan(Integer id) {
+		PlanteIntoCarre plan = planDAO.findById(id).orElse(null);
+		
+		planteDAO.delete(plan.getPlante());
+		
 		planDAO.deleteById(id);
 	}
 
