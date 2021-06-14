@@ -33,24 +33,22 @@ public class CarreEcran {
 	@PostMapping("/carre/ajout/{idPotager}")
 	public String ajoutCarre(@PathVariable("idPotager") Integer idPotager, @Valid Carre carre, BindingResult result,
 			Model model) throws CarreException {
-		
+
 		try {
-			System.out.println(idPotager);
 			Potager currentPotager = potagerManager.getById(idPotager);
 
 			currentPotager.addCarre(carre);
 
 			manager.addCarre(carre);
 			return "redirect:/carre/index";
-			
+
 		} catch (CarreException e) {
-			
+
 			model.addAttribute("error", e.getMessage());
 			return "les_carres/ajoutCarre";
-			
+
 		}
 
-		
 	}
 
 	@GetMapping("/carre/index")
@@ -59,7 +57,7 @@ public class CarreEcran {
 		return "les_carres/indexCarre";
 	}
 
-	@GetMapping("carre/edit/{id}")
+	@GetMapping("carre/update/{id}")
 	public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
 		Carre carre = manager.getById(id);
 		model.addAttribute("carre", carre);
@@ -67,13 +65,16 @@ public class CarreEcran {
 	}
 
 	@PostMapping("carre/update/{id}")
-	public String updateCarre(@PathVariable("id") Integer id, @Valid Carre carre, BindingResult result, Model model) throws CarreException {
-		carre.setIdCarre(id);
-		if (result.hasErrors()) {
+	public String updateCarre(@PathVariable("id") Integer id, @Valid Carre carre, BindingResult result, Model model)
+			throws CarreException {
+
+		try {
+			manager.updateCarre(carre, id);
+			return "redirect:/carre/index";
+		} catch (CarreException e) {
+			model.addAttribute("error", e.getMessage());
 			return "les_carres/updateCarre";
 		}
-		manager.updateCarre(carre, id);
-		return "redirect:/carre/index";
 	}
 
 	@GetMapping("/carre/delete/{id}")

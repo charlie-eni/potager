@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.potager.bo.Carre;
 import com.example.potager.bo.PlanteIntoCarre;
+import com.example.potager.bo.Potager;
 import com.example.potager.dal.CarreDAO;
 
 @Service
@@ -34,7 +35,7 @@ public class CarreManagerImpl implements CarreManager {
 				lstSurface.add(carre2.getSurface());
 			}
 		}
-		int sum = 0;
+		Integer sum = 0;
 		for (int i = 0; i < lstSurface.size(); i++) {
 			sum += lstSurface.get(i);
 		}
@@ -71,23 +72,38 @@ public class CarreManagerImpl implements CarreManager {
 
 	@Override
 	public void updateCarre(Carre carre, Integer id) throws CarreException {
-		carre.setIdCarre(id);
 
+		Carre bddCarre = dao.findById(id).orElse(carre);
+		
+		Potager potager = bddCarre.getPotager();
+		potager.addCarre(carre);
+		
+		
 		List<Integer> lstSurface = new ArrayList<Integer>();
-		List<Carre> lstCarre = getAllCarre();
+		List<Carre> lstCarre = potager.getCarre();
+
 		for (Carre carre2 : lstCarre) {
 			if (carre.getPotager().getIdPotager() == carre2.getPotager().getIdPotager()) {
 				lstSurface.add(carre2.getSurface());
 			}
 		}
-		int sum = 0;
+		Integer sum = 0;
 		for (int i = 0; i < lstSurface.size(); i++) {
 			sum += lstSurface.get(i);
 		}
-
-		if ((sum + carre.getSurface()) > carre.getPotager().getSurface()) {
+	
+		sum = sum - bddCarre.getSurface() ;
+		System.out.println("sum" + sum);
+		
+		if ( sum > potager.getSurface()) {
 			throw new CarreException("La surface des carrés est plus importante que le Potager");
-		}
+		} 
+		
+		
+
+		
+		carre.setIdCarre(id);
+		
 		dao.save(carre);
 	}
 

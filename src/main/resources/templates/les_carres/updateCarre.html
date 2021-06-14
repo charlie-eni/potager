@@ -10,7 +10,7 @@
 
 		<h1 class="text-center mt-2">Mise à jour carre</h1>
 
-		<form th:action="@{/carre/update/{id}(id=${carre.idCarre})}" th:object="${carre}" method="post">
+		<form th:object="${carre}" method="post">
 			<div class="row">
 				<div class="form-group col-md-5 mx-auto m-3">
 					<label for="surface">Surface</label>
