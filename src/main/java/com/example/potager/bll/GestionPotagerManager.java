@@ -19,7 +19,11 @@ public interface GestionPotagerManager {
 
 	public List<Action> listActionForTwoWeeks();
 
+	public List<PlanteIntoCarre> listPlan();
+
 	public Integer getPotagerByPlant(String plantName);
 
 	public void deletePlan(Integer id);
+
+	public void deletePlanByPlante(Plante plante);
 }

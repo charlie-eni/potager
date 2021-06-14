@@ -115,4 +115,14 @@ public class GestionPotagerManagerImpl implements GestionPotagerManager {
 		planDAO.deleteById(id);
 	}
 
+	@Override
+	public List<PlanteIntoCarre> listPlan() {
+		return (List<PlanteIntoCarre>) planDAO.findAll();
+	}
+
+	@Override
+	public void deletePlanByPlante(Plante plante) {
+		planDAO.deleteByPlante(plante);
+	}
+
 }

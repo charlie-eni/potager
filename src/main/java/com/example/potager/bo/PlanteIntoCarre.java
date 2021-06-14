@@ -22,7 +22,7 @@ public class PlanteIntoCarre {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
+	Integer id;
 
 	@ManyToOne
 	Plante plante;

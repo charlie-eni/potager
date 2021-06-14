@@ -28,7 +28,7 @@ public class Carre {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idCarre;
 
-	@OneToMany(mappedBy = "carre", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "carre", fetch = FetchType.EAGER)
 	List<PlanteIntoCarre> plans = new ArrayList<PlanteIntoCarre>();
 
 	private Integer surface;

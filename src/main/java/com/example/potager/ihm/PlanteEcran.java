@@ -19,10 +19,10 @@ import com.example.potager.bll.GestionPotagerManager;
 import com.example.potager.bll.PlanteException;
 import com.example.potager.bll.PlanteIntoCarreException;
 import com.example.potager.bll.PlanteManager;
-import com.example.potager.bll.PotagerManager;
 import com.example.potager.bo.Carre;
 import com.example.potager.bo.Plante;
 import com.example.potager.bo.PlanteIntoCarre;
+import com.example.potager.dal.PlanteIntoCarreDAO;
 
 @Controller
 public class PlanteEcran {
@@ -35,6 +35,9 @@ public class PlanteEcran {
 
 	@Autowired
 	private GestionPotagerManager gestionManager;
+	
+	@Autowired
+	PlanteIntoCarreDAO dao;
 
 	@GetMapping("/plante/index")
 	public String listePlantes(Model model) {
@@ -51,7 +54,7 @@ public class PlanteEcran {
 	@Transactional
 	public String ajoutPlante(@PathVariable("idCarre") Integer idCarre, @Valid Plante plante, PlanteIntoCarre plan,
 			BindingResult result, Model model) throws PlanteException, PlanteIntoCarreException, CarreException {
-		
+
 		try {
 			Carre carre = carreManager.getById(idCarre);
 
@@ -60,17 +63,15 @@ public class PlanteEcran {
 			gestionManager.addPlanteToPotager(plante, carre, plan);
 
 			return "redirect:/plante/index";
-			
-		} 
-		catch (PlanteIntoCarreException planteIntoE) {
+
+		} catch (PlanteIntoCarreException planteIntoE) {
 			model.addAttribute("error", planteIntoE.getMessage());
 			return "les_plantes/ajoutPlante";
-		}
-		catch (CarreException carreE) {
+		} catch (CarreException carreE) {
 			model.addAttribute("error", carreE.getMessage());
 			return "les_plantes/ajoutPlante";
 		}
-		
+
 	}
 
 	@GetMapping("plante/edit/{id}")
@@ -92,7 +93,11 @@ public class PlanteEcran {
 	}
 
 	@GetMapping("/plante/delete/{id}")
+	@Transactional
 	public String deletePlante(@PathVariable("id") Integer id, Model model) {
+		 
+		Plante plante = planteManager.getById(id);
+		gestionManager.deletePlanByPlante(plante);
 		planteManager.deletePlante(id);
 		return "redirect:/plante/index";
 	}
