@@ -55,17 +55,26 @@ public class PlanteEcran {
 	@Transactional
 	public String ajoutPlante(@PathVariable("idCarre") Integer idCarre, @Valid Plante plante, PlanteIntoCarre plan,
 			BindingResult result, Model model) throws PlanteException, PlanteIntoCarreException, CarreException {
-		if (result.hasErrors()) {
+		
+		try {
+			Carre carre = carreManager.getById(idCarre);
+
+			plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
+			System.out.println(plante);
+			gestionManager.addPlanteToPotager(plante, carre, plan);
+
+			return "redirect:/plante/index";
+			
+		} 
+		catch (PlanteIntoCarreException planteIntoE) {
+			model.addAttribute("error", planteIntoE.getMessage());
 			return "les_plantes/ajoutPlante";
 		}
-
-		Carre carre = carreManager.getById(idCarre);
-
-		plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
-		System.out.println(plante);
-		gestionManager.addPlanteToPotager(plante, carre, plan);
-
-		return "redirect:/plante/index";
+		catch (CarreException carreE) {
+			model.addAttribute("error", carreE.getMessage());
+			return "les_plantes/ajoutPlante";
+		}
+		
 	}
 
 	@GetMapping("plante/edit/{id}")
