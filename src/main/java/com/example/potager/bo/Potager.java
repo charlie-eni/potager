@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -26,6 +29,10 @@ public class Potager {
 	private Integer idPotager;
 	private String localisation;
 	private String nom;
+	
+	@NotNull(message="Ne peut pas être nul")
+	@Min(value = 1, message = "Surface trop petite, 1 minimum") 
+	@Max(value = 10000, message = "Surface trop grande, 10000 maximum")
 	private Integer surface;
 	private String ville;
 
