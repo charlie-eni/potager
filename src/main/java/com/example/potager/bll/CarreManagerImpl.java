@@ -49,8 +49,24 @@ public class CarreManagerImpl implements CarreManager {
 	}
 
 	@Override
-	public void updateCarre(Carre carre, Integer id) {
+	public void updateCarre(Carre carre, Integer id) throws CarreException {
 		carre.setIdCarre(id);
+		
+		List<Integer> lstSurface = new ArrayList<Integer>();
+		List<Carre> lstCarre = getAllCarre();
+		for (Carre carre2 : lstCarre) {
+			if (carre.getPotager().getIdPotager() == carre2.getPotager().getIdPotager()) {
+				lstSurface.add(carre2.getSurface());
+			}
+		}
+		int sum = 0;
+		for (int i = 0; i < lstSurface.size(); i++) {
+			sum += lstSurface.get(i);
+		}
+
+		if ((sum + carre.getSurface()) > carre.getPotager().getSurface()) {
+			throw new CarreException("La surface des carrés est plus importante que le Potager");
+		}
 		dao.save(carre);
 	}
 

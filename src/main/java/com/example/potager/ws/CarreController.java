@@ -41,7 +41,7 @@ public class CarreController {
 	}
 	
 	@PutMapping("/api/carre/{id}")
-	public Carre update(@RequestBody Carre carre, @PathVariable Integer id) {
+	public Carre update(@RequestBody Carre carre, @PathVariable Integer id) throws CarreException {
 		
 		carreManager.updateCarre(carre, id);
 		return carre;

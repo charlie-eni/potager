@@ -67,7 +67,7 @@ public class CarreEcran {
 	}
 
 	@PostMapping("carre/update/{id}")
-	public String updateCarre(@PathVariable("id") Integer id, @Valid Carre carre, BindingResult result, Model model) {
+	public String updateCarre(@PathVariable("id") Integer id, @Valid Carre carre, BindingResult result, Model model) throws CarreException {
 		carre.setIdCarre(id);
 		if (result.hasErrors()) {
 			return "les_carres/updateCarre";
