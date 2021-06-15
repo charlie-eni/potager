@@ -15,7 +15,7 @@
 				<div class="form-group col-md-5 mx-auto m-3">
 					<label for="surface">Surface</label>
 					<input type="text" th:field="*{surface}" class="form-control" id="surface" placeholder="">
-					<span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}"></span>
+					<span th:if="${#fields.hasErrors('surface')}" th:errors="*{surface}" th:class="text-danger"></span>
 				</div>
 				<div class="form-group col-md-5 mx-auto m-3">
 					<label for="typeSol">Type de sol</label>
