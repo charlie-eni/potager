@@ -55,6 +55,10 @@ public class PlanteEcran {
 	public String ajoutPlante(@PathVariable("idCarre") Integer idCarre, @Valid Plante plante, PlanteIntoCarre plan,
 			BindingResult result, Model model) throws PlanteException, PlanteIntoCarreException, CarreException {
 
+		if (result.hasErrors()) {
+			return "les_plantes/ajoutPlante";
+		}
+
 		try {
 			Carre carre = carreManager.getById(idCarre);
 
@@ -83,6 +87,11 @@ public class PlanteEcran {
 	@PostMapping("plante/update/{id}")
 	public String updatePlante(@PathVariable("id") Integer id, @Valid Plante plante, BindingResult result,
 			Model model) {
+
+		if (result.hasErrors()) {
+			return "les_plantes/updatePlante";
+		}
+
 		plante.setIdPlante(id);
 		if (result.hasErrors()) {
 			return "les_plantes/updatePlante";

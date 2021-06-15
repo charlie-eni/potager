@@ -36,13 +36,13 @@ public class Plante {
 	@OneToMany(mappedBy = "plante", fetch = FetchType.EAGER)
 	List<PlanteIntoCarre> plans = new ArrayList<PlanteIntoCarre>();
 
-	@NotBlank
+	@NotBlank(message = "Ne peut pas être nul")
 	private String nom;
-	
+
 	private Type type;
-	@NotBlank
+	@NotBlank(message = "Ne peut pas être nul")
 	private String variete;
-	
+
 	@NotNull(message = "Ne peut pas être nul")
 	@Min(value = 1, message = "Surface trop petite, 1 minimum")
 	@Max(value = 10000, message = "Surface trop grande, 10000 maximum")
