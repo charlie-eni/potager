@@ -51,7 +51,6 @@ public class Plante {
 	@Min(value = 1, message = "Vous devez au minimum mettre une plante")
 	private Integer nbPlante;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@NotBlank
 	private LocalDate miseEnPlace;
 
 	public Plante(String nom, Type type, String variete, Integer surface, Integer nbPlante, LocalDate miseEnPlace) {
