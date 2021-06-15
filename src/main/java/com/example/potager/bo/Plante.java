@@ -53,7 +53,7 @@ public class Plante {
 	@Min(value = 1, message = "Vous devez au minimum mettre une plante")
 	private Integer nbPlante;
 
-	//@NotNull(message = "Ne peut pas être nul")
+	@NotNull(message = "Ne peut pas être nul")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate miseEnPlace;
 
