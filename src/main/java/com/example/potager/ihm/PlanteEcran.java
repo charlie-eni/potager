@@ -52,7 +52,7 @@ public class PlanteEcran {
 
 	@PostMapping("/plante/ajout/{idCarre}")
 	@Transactional
-	public String ajoutPlante(@PathVariable("idCarre") Integer idCarre, @Valid Plante plante, PlanteIntoCarre plan,
+	public String ajoutPlante(@PathVariable("idCarre") Integer idCarre, @Valid Plante plante,
 			BindingResult result, Model model) throws PlanteException, PlanteIntoCarreException, CarreException {
 
 		if (result.hasErrors()) {
@@ -62,7 +62,7 @@ public class PlanteEcran {
 		try {
 			Carre carre = carreManager.getById(idCarre);
 
-			plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
+			PlanteIntoCarre plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
 			System.out.println(plante);
 			gestionManager.addPlanteToPotager(plante, carre, plan);
 

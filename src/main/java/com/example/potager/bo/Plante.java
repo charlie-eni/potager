@@ -40,6 +40,7 @@ public class Plante {
 	private String nom;
 
 	private Type type;
+
 	@NotBlank(message = "Ne peut pas être nul")
 	private String variete;
 
@@ -47,10 +48,12 @@ public class Plante {
 	@Min(value = 1, message = "Surface trop petite, 1 minimum")
 	@Max(value = 10000, message = "Surface trop grande, 10000 maximum")
 	private Integer surface;
+
 	@NotNull(message = "Ne peut pas être nul")
 	@Min(value = 1, message = "Vous devez au minimum mettre une plante")
 	private Integer nbPlante;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+
+	@NotNull(message = "Ne peut pas être nul")
 	private LocalDate miseEnPlace;
 
 	public Plante(String nom, Type type, String variete, Integer surface, Integer nbPlante, LocalDate miseEnPlace) {
