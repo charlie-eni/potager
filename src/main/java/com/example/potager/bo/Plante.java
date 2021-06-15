@@ -10,6 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,12 +36,22 @@ public class Plante {
 	@OneToMany(mappedBy = "plante", fetch = FetchType.EAGER)
 	List<PlanteIntoCarre> plans = new ArrayList<PlanteIntoCarre>();
 
+	@NotBlank
 	private String nom;
+	
 	private Type type;
+	@NotBlank
 	private String variete;
+	
+	@NotNull(message = "Ne peut pas être nul")
+	@Min(value = 1, message = "Surface trop petite, 1 minimum")
+	@Max(value = 10000, message = "Surface trop grande, 10000 maximum")
 	private Integer surface;
+	@NotNull(message = "Ne peut pas être nul")
+	@Min(value = 1, message = "Vous devez au minimum mettre une plante")
 	private Integer nbPlante;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotBlank
 	private LocalDate miseEnPlace;
 
 	public Plante(String nom, Type type, String variete, Integer surface, Integer nbPlante, LocalDate miseEnPlace) {
