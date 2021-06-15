@@ -26,10 +26,12 @@
 							<td th:text="${carre.Surface}"></td>
 							<td th:text="${carre.typeSol}"></td>
 							<td th:text="${carre.typeExposition}"></td>
-							<td><a th:href="@{/carre/update/{id} (id=${carre.idCarre})}">Modifier</a></td>
+							<td><button type="button" class="btn shadow-lg button-custom">
+							<a class="button-a-custom" th:href="@{/carre/update/{id} (id=${carre.idCarre})}">Modifier</a></button></td>
 							<td><button type="button" class="btn shadow-lg button-custom"><a class="button-a-custom"
 					th:href="@{/plante/ajout/{id} (id=${carre.idCarre})}">Ajouter un plan</a></button></td>
-							<td><a th:href="@{/carre/delete/{id} (id=${carre.idCarre})}">Supprimer</a></td>
+							<td><button type="button" class="btn shadow-lg button-custom">
+							<a class="button-a-custom" th:href="@{/carre/delete/{id} (id=${carre.idCarre})}">Supprimer</a></button></td>
 						</tr>
 					</tbody>
 				</table>
