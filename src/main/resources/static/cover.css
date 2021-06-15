@@ -1,9 +1,16 @@
 /*
  * Base structure
  */
-body {
+/* body {
 	text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
 	background-image: url("/Img/potager.jpg");
+} */
+.body-custom{
+	background-image: url("/Img/potager.jpg") !important;
+}
+
+.body-tomate{
+	background-image: url("/Img/tomato.jpg") !important;
 }
 
 /*

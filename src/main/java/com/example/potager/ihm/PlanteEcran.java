@@ -65,7 +65,11 @@ public class PlanteEcran {
 			PlanteIntoCarre plan = new PlanteIntoCarre(1, LocalDate.now(), LocalDate.now().plusMonths(1));
 			System.out.println(plante);
 			gestionManager.addPlanteToPotager(plante, carre, plan);
+			
+			//if(plante.getNom().equals("Tomate")) {
 
+			model.addAttribute("eggs", "tomate");
+			//}
 			return "redirect:/plante/index";
 
 		} catch (PlanteIntoCarreException planteIntoE) {

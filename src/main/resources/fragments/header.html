@@ -16,14 +16,23 @@
 <link href="/cover.css" rel="stylesheet">
 	</head>
 
-	<body>
+ 	<div th:if="${eggs} == tomate">
+
+			<body class="body-tomate">
+						
+	</div>
+	<div th:if="${eggs} == null">
+		<body class="body-custom">
+	</div>	 
+
+
 		<nav class="navbar navbar-expand-lg navbar-dark nav-custom shadow-lg"
 			aria-label="Tenth navbar example">
 
 			<h1 class="title-custom" aria-current="page">POTAGE.COM</h1>
 			<div class="collapse navbar-collapse" id="navbarsExample08">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" th:href="@{/potager/index}">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href= "/home">Home</a></li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/potager/index}">Potager</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/carre/index}">Carre</a></li>
