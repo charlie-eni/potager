@@ -34,6 +34,10 @@ public class CarreEcran {
 	public String ajoutCarre(@PathVariable("idPotager") Integer idPotager, @Valid Carre carre, BindingResult result,
 			Model model) throws CarreException {
 
+		if (result.hasErrors()) {
+			return "les_carres/ajoutCarre";
+		}
+		
 		try {
 			Potager currentPotager = potagerManager.getById(idPotager);
 
@@ -67,7 +71,11 @@ public class CarreEcran {
 	@PostMapping("carre/update/{id}")
 	public String updateCarre(@PathVariable("id") Integer id, @Valid Carre carre, BindingResult result, Model model)
 			throws CarreException {
-
+		
+		if (result.hasErrors()) {
+			return "les_carres/updateCarre";
+		}
+		
 		try {
 			manager.updateCarre(carre, id);
 			return "redirect:/carre/index";
