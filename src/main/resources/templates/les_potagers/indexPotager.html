@@ -27,10 +27,12 @@
 							<td th:text="${potager.localisation}"></td>
 							<td th:text="${potager.surface}"></td>
 							<td th:text="${potager.ville}"></td>
-							<td><a th:href="@{/potager/edit/{id} (id=${potager.getIdPotager})}">Modifier</a></td>
+							<td><button type="button" class="btn shadow-lg button-custom">
+							<a class="button-a-custom" th:href="@{/potager/edit/{id} (id=${potager.getIdPotager})}">Modifier</a></button></td>
 							<td><button type="button" class="btn shadow-lg button-custom"><a class="button-a-custom"
 					th:href="@{/carre/ajout/{id} (id=${potager.getIdPotager})}">Ajouter un carré</a></button></td>
-							<td><a th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</a></td>
+							<td><button type="button" class="btn shadow-lg button-custom">
+							<a class="button-a-custom" th:href="@{/potager/delete/{id} (id=${potager.idPotager})}">Supprimer</a></button></td>
 						</tr>
 					</tbody>
 				</table>
