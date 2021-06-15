@@ -16,14 +16,16 @@
 <link href="/cover.css" rel="stylesheet">
 	</head>
 
- 	<div th:if="${eggs} == tomate">
-
+	<div th:if="${eggs} == Tomate">
 			<body class="body-tomate">
-						
 	</div>
-	<div th:if="${eggs} == null">
+	<div th:if="${eggs} == Cannabis">
+			<body class="body-cannabis">
+	</div>
+	<div th:enless="${eggs} != tomate">
 		<body class="body-custom">
-	</div>	 
+	</div>
+		 
 
 
 		<nav class="navbar navbar-expand-lg navbar-dark nav-custom shadow-lg"
@@ -42,7 +44,7 @@
 
 			</div>
 		</nav>
-		
+
 		<div th:switch="${error}">
 			<div th:case="null" class="alert no-error-custom " role="alert" >petit malin tombe dans le ravin</div>
 			<div th:case="*"    class="alert error-custom float-left"    role="alert" th:text="${error}"></div>

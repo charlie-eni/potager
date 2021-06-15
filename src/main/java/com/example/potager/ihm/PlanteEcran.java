@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.potager.bll.CarreException;
 import com.example.potager.bll.CarreManager;
@@ -40,7 +42,7 @@ public class PlanteEcran {
 	PlanteIntoCarreDAO dao;
 
 	@GetMapping("/plante/index")
-	public String listePlantes(Model model) {
+	public String listePlantes(Model model, @ModelAttribute("eggs") String eggs) {
 		model.addAttribute("plantes", planteManager.getAllPlante());
 		return "les_plantes/indexPlante";
 	}
@@ -53,7 +55,7 @@ public class PlanteEcran {
 	@PostMapping("/plante/ajout/{idCarre}")
 	@Transactional
 	public String ajoutPlante(@PathVariable("idCarre") Integer idCarre, @Valid Plante plante, BindingResult result,
-			Model model) throws PlanteException, PlanteIntoCarreException, CarreException {
+			Model model, RedirectAttributes redirectAttributes) throws PlanteException, PlanteIntoCarreException, CarreException {
 
 		if (result.hasErrors()) {
 			return "les_plantes/ajoutPlante";
@@ -66,10 +68,15 @@ public class PlanteEcran {
 			System.out.println(plante);
 			gestionManager.addPlanteToPotager(plante, carre, plan);
 			
-			//if(plante.getNom().equals("Tomate")) {
+			if(plante.getNom().equals("Tomate")) {
+			String eggs = plante.getNom();
+			redirectAttributes.addAttribute("eggs", eggs);
+			}
+			if(plante.getNom().equals("Cannabis")) {
+				String eggs = plante.getNom();
+				redirectAttributes.addAttribute("eggs", eggs);
+			}
 
-			model.addAttribute("eggs", "tomate");
-			//}
 			return "redirect:/plante/index";
 
 		} catch (PlanteIntoCarreException planteIntoE) {

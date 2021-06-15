@@ -10,7 +10,10 @@
 }
 
 .body-tomate{
-	background-image: url("/Img/tomato.jpg") !important;
+	background-image: url("/Img/tomate.jpg") !important;
+}
+.body-cannabis{
+	background-image: url("/Img/cannabis.png") !important;
 }
 
 /*
